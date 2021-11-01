@@ -34,7 +34,7 @@ const Router = () => {
           <EditProfilePage />
         </Route>
 
-        <Route exact path={"/feed"}>
+        <Route exact path={"/"}>
           <FeedPage />
         </Route>
 
