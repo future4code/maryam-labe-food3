@@ -1,35 +1,35 @@
-export const goToLogin = () => {
+export const goToLogin = (history) => {
   history.push("/login");
 };
 
-export const goToSignUp = () => {
+export const goToSignUp = (history) => {
   history.push("/signUp");
 };
 
-export const goToCreateAddress = () => {
+export const goToCreateAddress = (history) => {
   history.push("/create-address");
 };
 
-export const goToFeed = () => {
+export const goToFeed = (history) => {
   history.push("/feed");
 };
 
-export const goToRestaurantDetails = () => {
+export const goToRestaurantDetails = (history) => {
   history.push("/restaurant-page");
 };
 
-export const goToCart = () => {
+export const goToCart = (history) => {
   history.push("/chart");
 };
 
-export const goToProfile = () => {
+export const goToProfile = (history) => {
   history.push("/profile-page");
 };
 
-export const goToEditProfile = () => {
+export const goToEditProfile = (history) => {
   history.push("/edit-profile");
 };
 
-export const goToEditAddress = () => {
+export const goToEditAddress = (history) => {
   history.push("/edit-address");
 };

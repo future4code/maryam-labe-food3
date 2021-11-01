@@ -1,5 +1,8 @@
 import React from "react";
 import useForm from "../../Hooks/useForm";
+import { signUp } from "../../services/SignupLogin";
+import { useHistory } from "react-router";
+import { goToEditAddress } from "../../routes/coordinator";
 
 const SignUpPage = () => {
   const [form, onChange, clearForm] = useForm({
@@ -9,10 +12,13 @@ const SignUpPage = () => {
     password: "",
   });
 
+  const history = useHistory();
+
   const onSubmitForm = (e) => {
     e.preventDefault();
-    console.log(form);
+    signUp(form, clearForm);
     clearForm();
+    goToEditAddress(history);
   };
   return (
     <div>
