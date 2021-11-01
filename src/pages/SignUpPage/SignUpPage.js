@@ -1,5 +1,5 @@
 import React from "react";
-import useForm from "./Hooks/useForm";
+import useForm from "../../Hooks/useForm";
 
 const SignUpPage = () => {
   const [form, onChange, clearForm] = useForm({
