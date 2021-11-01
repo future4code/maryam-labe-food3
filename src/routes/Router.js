@@ -11,45 +11,47 @@ import ChartPage from "../pages/ChartPage/ChartPage";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
 
 const Router = () => {
-  <BrowserRouter>
-    <Switch>
-      <Route exact path={"/login"}>
-        <LoginPage />
-      </Route>
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path={"/login"}>
+          <LoginPage />
+        </Route>
 
-      <Route exact path={"/signUp"}>
-        <SignUpPage />
-      </Route>
+        <Route exact path={"/signUp"}>
+          <SignUpPage />
+        </Route>
 
-      <Route exact path={"/create-address"}>
-        <CreateAddressPage />
-      </Route>
+        <Route exact path={"/create-address"}>
+          <CreateAddressPage />
+        </Route>
 
-      <Route exact path={"/edit-address"}>
-        <EditAddressPage />
-      </Route>
+        <Route exact path={"/edit-address"}>
+          <EditAddressPage />
+        </Route>
 
-      <Route exact path={"/edit-profile"}>
-        <EditProfilePage />
-      </Route>
+        <Route exact path={"/edit-profile"}>
+          <EditProfilePage />
+        </Route>
 
-      <Route exact path={"/feed"}>
-        <FeedPage />
-      </Route>
+        <Route exact path={"/feed"}>
+          <FeedPage />
+        </Route>
 
-      <Route exact path={"/restaurant-page"}>
-        <RestaurantPage />
-      </Route>
+        <Route exact path={"/restaurant-page"}>
+          <RestaurantPage />
+        </Route>
 
-      <Route exact path={"/chart"}>
-        <ChartPage />
-      </Route>
+        <Route exact path={"/chart"}>
+          <ChartPage />
+        </Route>
 
-      <Route exact path={"/profile-page"}>
-        <ProfilePage />
-      </Route>
-    </Switch>
-  </BrowserRouter>;
+        <Route exact path={"/profile-page"}>
+          <ProfilePage />
+        </Route>
+      </Switch>
+    </BrowserRouter>
+  )
 };
 
 export default Router;
