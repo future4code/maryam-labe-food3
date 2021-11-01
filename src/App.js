@@ -8,7 +8,6 @@ import FeedPage from "./pages/FeedPage/FeedPage";
 function App() {
   return (
     <div>
-      <RestaurantCard />
       <Router />
     </div>
   );
