@@ -1,10 +1,13 @@
 import React from 'react';
+import { ThemeProvider } from '@emotion/react';
+import { theme } from './constants/theme';
+import { Button } from '@mui/material';
 
 function App() {
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       Oi
-    </div>
+    </ThemeProvider>
   );
 }
 
