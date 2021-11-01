@@ -1,5 +1,6 @@
 import React from "react";
 import useForm from "../../Hooks/useForm";
+import { login } from "../../services/SignupLogin";
 
 const LoginPage = () => {
   const [form, onChange, clearForm] = useForm({
@@ -9,7 +10,7 @@ const LoginPage = () => {
 
   const onSubmitForm = (e) => {
     e.preventDefault();
-    console.log(form);
+    login(form, clearForm);
     clearForm();
   };
   return (
