@@ -1,11 +1,11 @@
 import React from 'react';
 
-function App() {
+const ChartPage = () => {
   return (
     <div>
-      Oi
+      Carrinho
     </div>
   );
 }
 
-export default App;
+export default ChartPage;

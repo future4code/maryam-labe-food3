@@ -1,11 +1,11 @@
 import React from 'react';
 
-function App() {
+const FeedPage = () => {
   return (
     <div>
-      Oi
+      Feed
     </div>
   );
 }
 
-export default App;
+export default FeedPage;
