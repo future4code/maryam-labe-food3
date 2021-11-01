@@ -1,10 +1,15 @@
 import React from 'react';
+import { DivFooter, DivButtons } from "./FooterStyles"
 
 const Footer = () => {
   return (
-    <div>
-      Footer
-    </div>
+    <DivFooter>
+      <DivButtons>
+        <button>Casa</button>
+        <button>Carrinho</button>
+        <button>Perfil</button>
+      </DivButtons>
+    </DivFooter>
   );
 }
 
