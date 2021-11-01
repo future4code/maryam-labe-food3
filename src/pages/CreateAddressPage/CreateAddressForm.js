@@ -23,7 +23,6 @@ const CreateAddressForm = () => {
     addAddress()
   }
 
-
   const addAddress = () => {
     axios
       .post(`${base_url}/labe-food3/address`, {
@@ -35,7 +34,7 @@ const CreateAddressForm = () => {
       }, form)
       .then(response => {
         alert("Endereço adiconado com sucesso");
-        //colocar função de redirecionar para login
+        //colocar função de redirecionar para feed
         clear();
       })
       .catch(error => {
