@@ -5,7 +5,7 @@ import LoginPage from './pages/LoginPage/LoginPage';
 function App() {
   return (
     <div>
-      Oi
+      <CreateAddressPage />
     </div>
   );
 }
