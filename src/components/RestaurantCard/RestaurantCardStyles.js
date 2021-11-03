@@ -1,11 +1,15 @@
 import styled from "styled-components";
 
 export const CardContainer = styled.div`
-  width: 90vw;
+  max-width: 90%;
   height: 14rem;
   display: flex;
   flex-direction: column;
   border-radius: 0.5rem;
+  margin: 0.5rem;
+`
+
+export const TextContainer = styled.div`
   margin: 0.5rem;
 `
 

@@ -5,6 +5,8 @@ import axios from 'axios';
 import { base_url } from '../../constants/urls';
 import { headers_token } from '../../constants/headers';
 import RestaurantCard from '../../components/RestaurantCard/RestaurantCard';
+import { ScreenContainer, SubtitleContainer } from './RestaurantPageStyles';
+import { Typography, Divider } from '@mui/material';
 
 const RestaurantPage = () => {
   const [data, setData] = useState({ restaurant: {} });
@@ -33,10 +35,16 @@ const RestaurantPage = () => {
   })
 
   return (
-    <div>
+    <ScreenContainer>
       <RestaurantCard restaurant={data && data.restaurant} />
+      <SubtitleContainer>
+        <Typography variant="subtitle1" gutterBottom component="div" sx={{ textAlign: 'left', m: 0, p: 0 }}>
+          <strong>Pratos principais</strong>
+          <Divider fullWidth sx={{ border: 1 }}></Divider>
+        </Typography>
+      </SubtitleContainer>
       {productsCards}
-    </div>
+    </ScreenContainer>
   );
 }
 
