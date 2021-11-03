@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import useProtectedPage from "../../Hooks/useProtectedPage"
 import useRequestData from "../../Hooks/useRequestData"
 import Footer from "../../components/Footer/Footer"
 import { base_url } from "../../constants/urls"
-
+import { GlobalContext } from '../../context/GlobalContext'
 import { DivRestaurants, DivImg } from "./FeedPageStyles";
 
 const FeedPage = () => {
   // useProtectedPage();
   const [search, setSearch] = useState("");
   const [categorySearch, setCategorySearch] = useState("");
+  const {setHeaderName} = useContext(GlobalContext) 
+
+  const pageName = setHeaderName('Ifuture')
 
   const data = useRequestData({}, `${base_url}/fourFoodA/restaurants`);
   const restaurants = data.restaurants
