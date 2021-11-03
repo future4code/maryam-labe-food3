@@ -65,7 +65,6 @@ const CreateAddressForm = () => {
           name="complement"
           placeholder="Complemento"
           type="text"
-          required
           onChange={onChange}
         />
         <input
