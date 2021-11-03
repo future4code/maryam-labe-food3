@@ -15,9 +15,6 @@ const FeedPage = () => {
   const restaurants = data.restaurants
 
   const restaurantCategory = restaurants && restaurants
-  .filter((restaurant) => {
-    return restaurant.category.toLowerCase() === restaurant.category.toLowerCase()
-  })
   .map((restaurant) => {
     return (
       <button onClick={() => handleCategory(restaurant.category)} key={restaurant.id}>{restaurant.category}</button>
