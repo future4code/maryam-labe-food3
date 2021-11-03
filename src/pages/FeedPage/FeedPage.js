@@ -1,18 +1,31 @@
 import React, { useState } from 'react';
 import useProtectedPage from "../../Hooks/useProtectedPage"
 import useRequestData from "../../Hooks/useRequestData"
+import useRequestDataTest from '../../Hooks/useResquestDataTest';
 import Footer from "../../components/Footer/Footer"
 import { base_url } from "../../constants/urls"
+import { headers_token } from '../../constants/headers';
+import { Button } from '@mui/material';
+import { goToRestaurantDetails } from '../../routes/coordinator';
 
 import { DivRestaurants, DivImg } from "./FeedPageStyles";
+import { useHistory } from 'react-router';
 
 const FeedPage = () => {
   // useProtectedPage();
   const [search, setSearch] = useState("");
   const [categorySearch, setCategorySearch] = useState("");
+  const history = useHistory();
 
   const data = useRequestData({}, `${base_url}/fourFoodA/restaurants`);
   const restaurants = data.restaurants
+  console.log("restaurantes", restaurants);
+
+  const data2 = useRequestDataTest({}, `${base_url}/fourFoodA/restaurants`, headers_token);
+  const restaurants2 = data2.restaurants
+  console.log("restaurantes 2", restaurants2);
+
+
 
   const restaurantCategory = restaurants && restaurants
     .map((restaurant) => {
@@ -34,7 +47,10 @@ const FeedPage = () => {
           <DivImg>
             <img src={restaurant.logoUrl} />
           </DivImg>
-          <p>{restaurant.name}</p>
+          <Button
+            variant="text"
+            onClick={() => goToRestaurantDetails(history, restaurant.id)}
+          >{restaurant.name}</Button>
           {restaurant.deliveryTime <= 20 ?
             <p>{restaurant.deliveryTime} min</p> :
             <p>{restaurant.deliveryTime - 10} - {restaurant.deliveryTime} min</p>

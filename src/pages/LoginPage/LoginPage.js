@@ -40,8 +40,8 @@ const LoginPage = () => {
           value={form.password}
           type="password"
           placeholder="Enter your password"
-          title="Senha precisa ter minimo de 8 caracteres e pelo menos 1 letra e 1 numero"
-          pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+        // title="Senha precisa ter minimo de 8 caracteres e pelo menos 1 letra e 1 numero"
+        // pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
         />
         <br />
         <button type="submit">Entrar</button>
