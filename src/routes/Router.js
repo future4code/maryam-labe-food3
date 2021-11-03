@@ -38,7 +38,7 @@ const Router = () => {
           <FeedPage />
         </Route>
 
-        <Route exact path={"/restaurant-page"}>
+        <Route exact path={"/:restaurant"}>
           <RestaurantPage />
         </Route>
 
@@ -46,7 +46,7 @@ const Router = () => {
           <ChartPage />
         </Route>
 
-        <Route exact path={"/profile-page"}>
+        <Route exact path={"/:profile"}>
           <ProfilePage />
         </Route>
       </Switch>
