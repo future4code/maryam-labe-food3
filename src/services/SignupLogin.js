@@ -1,5 +1,6 @@
 import axios from "axios";
 import { base_url } from "../constants/urls";
+import { goToFeed } from "../routes/coordinator";
 
 export const signUp = (body, clearForm) => {
   const header = {

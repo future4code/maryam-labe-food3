@@ -11,7 +11,7 @@ export const goToCreateAddress = (history) => {
 };
 
 export const goToFeed = (history) => {
-  history.push("/feed");
+  history.push("/");
 };
 
 export const goToRestaurantDetails = (history) => {

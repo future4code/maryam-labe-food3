@@ -1,11 +1,13 @@
-import React from 'react';
-import Footer from "../../components/Footer/Footer"
+import React from "react";
+import Footer from "../../components/Footer/Footer";
+import useProtectedPage from "../../Hooks/useProtectedPage";
 
 const FeedPage = () => {
+  useProtectedPage();
   return (
     <div>
       <div>
-        <input placeholder={"Restaurante"}/>
+        <input placeholder={"Restaurante"} />
       </div>
       <div>
         <p>Opções Restaurante:</p>
@@ -20,6 +22,6 @@ const FeedPage = () => {
       <Footer />
     </div>
   );
-}
+};
 
 export default FeedPage;

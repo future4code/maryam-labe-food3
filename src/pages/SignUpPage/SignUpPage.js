@@ -3,6 +3,7 @@ import useForm from "../../Hooks/useForm";
 import { signUp } from "../../services/SignupLogin";
 import { useHistory } from "react-router";
 import { goToEditAddress } from "../../routes/coordinator";
+import useUnprotectedPage from "../../Hooks/useUnprotectedPage";
 
 const SignUpPage = () => {
   const [form, onChange, clearForm] = useForm({
@@ -13,7 +14,7 @@ const SignUpPage = () => {
   });
 
   const history = useHistory();
-
+  useUnprotectedPage();
   const onSubmitForm = (e) => {
     e.preventDefault();
     signUp(form, clearForm);

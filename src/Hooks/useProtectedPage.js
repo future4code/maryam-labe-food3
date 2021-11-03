@@ -1,5 +1,6 @@
 import { useHistory } from "react-router";
 import { useLayoutEffect } from "react";
+import { goToLogin } from "../routes/coordinator";
 // importar função de ir para login
 
 const useProtectedPage = () => {
@@ -9,8 +10,9 @@ const useProtectedPage = () => {
     const token = localStorage.getItem("token");
     if (!token) {
       //adicionar função de ir para login
+      goToLogin(history);
     }
-  }, [history])
-}
+  }, [history]);
+};
 
 export default useProtectedPage;

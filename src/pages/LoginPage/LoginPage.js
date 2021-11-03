@@ -1,6 +1,9 @@
 import React from "react";
 import useForm from "../../Hooks/useForm";
+import { goToFeed } from "../../routes/coordinator";
 import { login } from "../../services/SignupLogin";
+import { useHistory } from "react-router";
+import useUnprotectedPage from "../../Hooks/useUnprotectedPage";
 
 const LoginPage = () => {
   const [form, onChange, clearForm] = useForm({
@@ -11,8 +14,12 @@ const LoginPage = () => {
   const onSubmitForm = (e) => {
     e.preventDefault();
     login(form, clearForm);
+    goToFeed(history);
     clearForm();
   };
+
+  const history = useHistory();
+  useUnprotectedPage();
   return (
     <div>
       <h3>Login Page</h3>
