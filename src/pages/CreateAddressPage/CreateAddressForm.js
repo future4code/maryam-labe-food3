@@ -4,6 +4,7 @@ import useForm from '../../Hooks/useForm';
 import { useHistory } from 'react-router';
 import axios from 'axios';
 import { base_url } from '../../constants/urls';
+import { goToFeed } from '../../routes/coordinator';
 // import { Button, TextField, Typography } from '@mui/material';
 
 const CreateAddressForm = () => {
@@ -35,7 +36,7 @@ const CreateAddressForm = () => {
       })
       .then(response => {
         alert("Endereço adiconado com sucesso");
-        //colocar função de redirecionar para feed
+        goToFeed(history);
         clear();
       })
       .catch(error => {
