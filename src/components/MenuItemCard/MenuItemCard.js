@@ -1,17 +1,34 @@
 import React from 'react';
-import { CardContainer, ImgWrapper } from './MenuItemCardStyles';
+import { Card } from '@mui/material';
+import { CardActions } from '@mui/material';
+import { CardContent } from '@mui/material';
+import { CardMedia } from '@mui/material';
+import { Button } from '@mui/material';
+import { Typography } from '@mui/material';
 
 const MenuItemCard = () => {
   return (
-    <CardContainer>
-      <ImgWrapper src="https://s2.glbimg.com/9zc9T-9LwXwKG_8XOq_9EF67bSQ=/620x455/e.glbimg.com/og/ed/f/original/2021/04/30/receita-hamburguer-smash-burguer-bacon-cheddaar.jpg" />
-      <div>
-        <h5>Bullger</h5>
-        <p>Pão, carne, queijo, picles e molho</p>
-        <h6>R$20,00</h6>
-        <button>adicionar</button>
-      </div>
-    </CardContainer>
+    <Card sx={{ maxWidth: 345 }}>
+      <CardMedia
+        component="img"
+        alt="green iguana"
+        height="140"
+        image="/static/images/cards/contemplative-reptile.jpg"
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          Lizard
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          Lizards are a widespread group of squamate reptiles, with over 6,000
+          species, ranging across all continents except Antarctica
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small">Share</Button>
+        <Button size="small">Learn More</Button>
+      </CardActions>
+    </Card>
   );
 }
 

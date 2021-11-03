@@ -1,15 +1,3 @@
-
-import React from "react";
-import Footer from "../../components/Footer/Footer";
-import useProtectedPage from "../../Hooks/useProtectedPage";
-
-const FeedPage = () => {
-  useProtectedPage();
-  return (
-    <div>
-      <div>
-        <input placeholder={"Restaurante"} />
-
 import React, { useState } from 'react';
 import useProtectedPage from "../../Hooks/useProtectedPage"
 import useRequestData from "../../Hooks/useRequestData"
