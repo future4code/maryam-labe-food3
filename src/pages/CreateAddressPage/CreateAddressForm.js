@@ -5,7 +5,7 @@ import { useHistory } from 'react-router';
 import axios from 'axios';
 import { base_url } from '../../constants/urls';
 import { goToFeed } from '../../routes/coordinator';
-// import { Button, TextField, Typography } from '@mui/material';
+import { Button, TextField, Typography } from '@mui/material';
 
 const CreateAddressForm = () => {
   const [form, onChange, clear] = useForm({
@@ -48,6 +48,13 @@ const CreateAddressForm = () => {
   return (
     <form onSubmit={onSubmitForm}>
       <ScreenContainer>
+        <TextField
+          sx={{ mb: 2, maxWidth: 400 }}
+          label="Logradouro"
+          placeholder="Rua / Av"
+          required
+          fullWidth
+        />
         <input
           name="street"
           placeholder="Logradouro"
