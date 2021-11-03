@@ -14,16 +14,16 @@ export const goToFeed = (history) => {
   history.push("/feed");
 };
 
-export const goToRestaurantDetails = (history) => {
-  history.push("/restaurant-page");
+export const goToRestaurantDetails = (history, restaurant) => {
+  history.push(`/${restaurant}`);
 };
 
 export const goToCart = (history) => {
   history.push("/chart");
 };
 
-export const goToProfile = (history) => {
-  history.push("/profile-page");
+export const goToProfile = (history, profile) => {
+  history.push(`/${profile}`);
 };
 
 export const goToEditProfile = (history) => {
