@@ -9,10 +9,12 @@ import FeedPage from "../pages/FeedPage/FeedPage";
 import RestaurantPage from "../pages/RestaurantPage/RestaurantPage";
 import ChartPage from "../pages/ChartPage/ChartPage";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
+import Header from "../components/Header/Header";
 
 const Router = () => {
   return (
     <BrowserRouter>
+      <Header />
       <Switch>
         <Route exact path={"/login"}>
           <LoginPage />
