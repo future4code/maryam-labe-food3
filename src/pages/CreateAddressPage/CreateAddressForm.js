@@ -4,16 +4,17 @@ import useForm from '../../Hooks/useForm';
 import { useHistory } from 'react-router';
 import axios from 'axios';
 import { base_url } from '../../constants/urls';
+import { goToFeed } from '../../routes/coordinator';
 // import { Button, TextField, Typography } from '@mui/material';
 
 const CreateAddressForm = () => {
   const [form, onChange, clear] = useForm({
     street: "",
     number: "",
-    complement: "",
     neighbourhood: "",
     city: "",
-    state: ""
+    state: "",
+    complement: "",
   })
 
   const history = useHistory();
@@ -24,22 +25,23 @@ const CreateAddressForm = () => {
   }
 
   const addAddress = () => {
+    console.log("form", form);
     axios
-      .post(`${base_url}/labe-food3/address`, {
+      .put(`${base_url}/fourFoodA/address`, form, {
         headers:
         {
           "auth": localStorage.getItem("token"),
           "Content-Type": "application/json"
         }
-      }, form)
+      })
       .then(response => {
         alert("Endereço adiconado com sucesso");
-        //colocar função de redirecionar para feed
+        goToFeed(history);
         clear();
       })
       .catch(error => {
         alert("Desculpe, houve um erro");
-        console.log(error)
+        console.log(error.response)
       })
   }
 
@@ -51,36 +53,41 @@ const CreateAddressForm = () => {
           placeholder="Logradouro"
           type="text"
           required
+          onChange={onChange}
         />
         <input
           name="number"
           placeholder="Número"
           type="text"
           required
+          onChange={onChange}
         />
         <input
           name="complement"
           placeholder="Complemento"
           type="text"
-          required
+          onChange={onChange}
         />
         <input
           name="neighbourhood"
           placeholder="Bairro"
           type="text"
           required
+          onChange={onChange}
         />
         <input
           name="city"
           placeholder="Cidade"
           type="text"
           required
+          onChange={onChange}
         />
         <input
           name="state"
           placeholder="Estado"
           type="text"
           required
+          onChange={onChange}
         />
         <button type="submit">salvar</button>
         {/* <Typography variant="subtitle1" gutterBottom component="div">
