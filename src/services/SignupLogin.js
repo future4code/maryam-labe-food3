@@ -1,5 +1,6 @@
 import axios from "axios";
 import { base_url } from "../constants/urls";
+import { goToFeed } from "../routes/coordinator";
 
 export const signUp = (body, clearForm) => {
   const header = {
@@ -11,6 +12,7 @@ export const signUp = (body, clearForm) => {
   axios
     .post(`${base_url}/fourFoodA/signup`, body, header)
     .then((res) => {
+      // localStorage.setItem("token", res.data.token);
       clearForm();
       alert("Usuario cadastrado com sucesso!");
     })

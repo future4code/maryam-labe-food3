@@ -1,3 +1,15 @@
+
+import React from "react";
+import Footer from "../../components/Footer/Footer";
+import useProtectedPage from "../../Hooks/useProtectedPage";
+
+const FeedPage = () => {
+  useProtectedPage();
+  return (
+    <div>
+      <div>
+        <input placeholder={"Restaurante"} />
+
 import React, { useState } from 'react';
 import useProtectedPage from "../../Hooks/useProtectedPage"
 import useRequestData from "../../Hooks/useRequestData"
@@ -56,6 +68,7 @@ const FeedPage = () => {
     <div>
       <div>
         <input placeholder={"Restaurante"} onChange={handleSearch} />
+
       </div>
       <div>
         <p>Opções Restaurante:</p>
@@ -67,6 +80,6 @@ const FeedPage = () => {
       <Footer />
     </div>
   );
-}
+};
 
 export default FeedPage;
