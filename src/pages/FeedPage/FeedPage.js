@@ -3,15 +3,22 @@ import useProtectedPage from "../../Hooks/useProtectedPage"
 import useRequestData from "../../Hooks/useRequestData"
 import Footer from "../../components/Footer/Footer"
 import { base_url } from "../../constants/urls"
+import {useHistory} from "react-router";
+import { goToRestaurantDetails } from "../../routes/coordinator"
 import { headers_token } from '../../constants/headers';
-import { Button } from '@mui/material';
-import { goToRestaurantDetails } from '../../routes/coordinator';
 
-import { DivRestaurants, DivImg } from "./FeedPageStyles";
-import { useHistory } from 'react-router';
+import { DivSearch, DivCategory, CardStyled, DivCardInfo } from "./FeedPageStyles";
+import SearchIcon from '@mui/icons-material/Search';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+
+
 
 const FeedPage = () => {
   // useProtectedPage();
+  const history = useHistory();
+
   const [search, setSearch] = useState("");
   const [categorySearch, setCategorySearch] = useState("");
   const history = useHistory();
@@ -37,43 +44,53 @@ const FeedPage = () => {
     .map((restaurant) => {
       console.log("restaurante", restaurant)
       return (
-        <DivRestaurants key={restaurant.id}>
-          <DivImg>
-            <img src={restaurant.logoUrl} />
-          </DivImg>
-          <Button
-            variant="text"
-            onClick={() => goToRestaurantDetails(history, restaurant.id)}
-          >{restaurant.name}</Button>
-          {restaurant.deliveryTime <= 20 ?
-            <p>{restaurant.deliveryTime} min</p> :
-            <p>{restaurant.deliveryTime - 10} - {restaurant.deliveryTime} min</p>
-          }
-          <p>Frete: R$:{restaurant.shipping},00</p>
-        </DivRestaurants>
+        <CardStyled
+          key={restaurant.id} 
+          onClick={() => goToRestaurantDetails(history, restaurant.id)}>
+            <CardMedia
+              component="img"
+              height="140"
+              image={restaurant.logoUrl}
+              alt="green iguana"
+            />
+            <CardContent>
+              <Typography 
+                gutterBottom variant="h5" 
+                component="div"
+                color="primary.main">
+                {restaurant.name}
+              </Typography>
+              <DivCardInfo>
+                {restaurant.deliveryTime <= 20 ?
+                  <Typography variant="body1" color="secondary.main">{restaurant.deliveryTime} min</Typography> :
+                  <Typography variant="body1" color="secondary.main">{restaurant.deliveryTime - 10} - {restaurant.deliveryTime} min</Typography>
+                }
+                <Typography variant="body1" color="secondary.main">Frete: R$:{restaurant.shipping},00</Typography>
+              </DivCardInfo>
+            </CardContent>
+        </CardStyled>
       )
     });
 
   const handleSearch = (event) => {
     setSearch(event.target.value)
-  }
+  };
 
   const handleCategory = (value) => {
     setCategorySearch(value)
-  }
+  };
 
   return (
     <div>
-      <div>
+      <DivSearch>
+        <SearchIcon color="secondary"/>
         <input placeholder={"Restaurante"} onChange={handleSearch} />
-
-      </div>
-      <div>
-        <p>Opções Restaurante:</p>
+      </DivSearch>
+      <DivCategory>
         {restaurantCategory}
-      </div>
+      </DivCategory>
       <div>
-        {restaurantComponents}
+        {restaurantComponents && restaurantComponents.length > 0 ? restaurantComponents : <p>Não encontramos :(</p>}
       </div>
       <Footer />
     </div>
