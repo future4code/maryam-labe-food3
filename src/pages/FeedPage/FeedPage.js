@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import useProtectedPage from "../../Hooks/useProtectedPage"
 import useRequestData from "../../Hooks/useRequestData"
-import useRequestDataTest from '../../Hooks/useResquestDataTest';
 import Footer from "../../components/Footer/Footer"
 import { base_url } from "../../constants/urls"
 import { headers_token } from '../../constants/headers';
@@ -19,13 +18,7 @@ const FeedPage = () => {
 
   const data = useRequestData({}, `${base_url}/fourFoodA/restaurants`);
   const restaurants = data.restaurants
-  console.log("restaurantes", restaurants);
-
-  const data2 = useRequestDataTest({}, `${base_url}/fourFoodA/restaurants`, headers_token);
-  const restaurants2 = data2.restaurants
-  console.log("restaurantes 2", restaurants2);
-
-
+  console.log("lista de restaurantes", restaurants);
 
   const restaurantCategory = restaurants && restaurants
     .map((restaurant) => {
@@ -42,6 +35,7 @@ const FeedPage = () => {
       return restaurant.category.toLowerCase().includes(categorySearch.toLowerCase())
     })
     .map((restaurant) => {
+      console.log("restaurante", restaurant)
       return (
         <DivRestaurants key={restaurant.id}>
           <DivImg>
