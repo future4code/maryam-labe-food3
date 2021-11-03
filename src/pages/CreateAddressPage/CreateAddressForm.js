@@ -120,8 +120,8 @@ const CreateAddressForm = () => {
         <Button
           sx={{ maxWidth: 400 }}
           type="submit"
-          variant="contained"
           color="primary"
+          variant="contained"
           fullWidth>Salvar</Button>
       </ScreenContainer>
     </form>
