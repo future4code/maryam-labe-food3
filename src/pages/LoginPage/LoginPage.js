@@ -1,6 +1,6 @@
 import React from "react";
 import useForm from "../../Hooks/useForm";
-import { goToFeed } from "../../routes/coordinator";
+import { goToFeed, goToSignUp } from "../../routes/coordinator";
 import { login } from "../../services/SignupLogin";
 import { useHistory } from "react-router";
 import useUnprotectedPage from "../../Hooks/useUnprotectedPage";
@@ -41,11 +41,15 @@ const LoginPage = () => {
           type="password"
           placeholder="Enter your password"
           title="Senha precisa ter minimo de 8 caracteres e pelo menos 1 letra e 1 numero"
-          pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+          // pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
         />
         <br />
         <button type="submit">Entrar</button>
       </form>
+      <div>
+        <p>Não possui cadastro?</p>
+        <button onClick={() => goToSignUp(history)}>Cadastrar</button>
+      </div>
     </div>
   );
 };
