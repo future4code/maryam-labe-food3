@@ -1,12 +1,19 @@
 import styled from "styled-components";
 
 export const CardContainer = styled.div`
-  border: 1px solid black;
-  border-radius: 20px;
-  display: flex;
   width: 90%;
+  display: flex;
+  flex-direction: row;
+  border-radius: 0.5rem;
+  border: 1px solid lightgray;
+  margin: 0.5rem;
 `
 
 export const ImgWrapper = styled.img`
-  height: 100px;
+  width: 7rem;
+  height: 9rem;
+  object-fit: cover;
+  object-position: 50% 50%;
+  border-bottom-left-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
 `

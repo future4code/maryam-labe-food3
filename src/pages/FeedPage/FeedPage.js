@@ -5,16 +5,15 @@ import Footer from "../../components/Footer/Footer"
 import { base_url } from "../../constants/urls"
 import {useHistory} from "react-router";
 import { goToRestaurantDetails } from "../../routes/coordinator"
+import { headers_token } from '../../constants/headers';
 
-import { DivRestaurants, DivImg, DivSearch, DivCategory, CardStyled, DivCardInfo} from "./FeedPageStyles";
+import { DivSearch, DivCategory, CardStyled, DivCardInfo } from "./FeedPageStyles";
 import SearchIcon from '@mui/icons-material/Search';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+
+
 
 const FeedPage = () => {
   // useProtectedPage();
@@ -22,9 +21,11 @@ const FeedPage = () => {
 
   const [search, setSearch] = useState("");
   const [categorySearch, setCategorySearch] = useState("");
+  const history = useHistory();
 
   const data = useRequestData({}, `${base_url}/fourFoodA/restaurants`);
   const restaurants = data.restaurants
+  console.log("lista de restaurantes", restaurants);
 
   const restaurantCategory = restaurants && restaurants
     .map((restaurant) => {
@@ -41,6 +42,7 @@ const FeedPage = () => {
       return restaurant.category.toLowerCase().includes(categorySearch.toLowerCase())
     })
     .map((restaurant) => {
+      console.log("restaurante", restaurant)
       return (
         <CardStyled
           key={restaurant.id} 

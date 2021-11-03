@@ -40,7 +40,7 @@ const Router = () => {
           <FeedPage />
         </Route>
 
-        <Route exact path={"/restaurant/:restaurant"}>
+        <Route exact path={"/restaurant/:restaurantId"}>
           <RestaurantPage />
         </Route>
 
