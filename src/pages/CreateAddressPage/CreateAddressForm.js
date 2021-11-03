@@ -48,98 +48,81 @@ const CreateAddressForm = () => {
   return (
     <form onSubmit={onSubmitForm}>
       <ScreenContainer>
+        <Typography variant="subtitle1" gutterBottom component="div">
+          <strong>Meu endereço</strong>
+        </Typography>
         <TextField
           sx={{ mb: 2, maxWidth: 400 }}
+          name="street"
+          type="text"
+          onChange={onChange}
           label="Logradouro"
           placeholder="Rua / Av"
           required
           fullWidth
         />
-        <input
-          name="street"
-          placeholder="Logradouro"
-          type="text"
-          required
-          onChange={onChange}
-        />
-        <input
+
+        <TextField
+          sx={{ mb: 2, maxWidth: 400 }}
           name="number"
+          type="text"
+          onChange={onChange}
+          label="Número"
           placeholder="Número"
-          type="text"
           required
-          onChange={onChange}
+          fullWidth
         />
-        <input
+
+        <TextField
+          sx={{ mb: 2, maxWidth: 400 }}
           name="complement"
+          type="text"
+          onChange={onChange}
+          label="Complemento"
           placeholder="Complemento"
-          type="text"
-          onChange={onChange}
+          fullWidth
         />
-        <input
+
+        <TextField
+          sx={{ mb: 2, maxWidth: 400 }}
           name="neighbourhood"
+          type="text"
+          onChange={onChange}
+          label="Bairro"
           placeholder="Bairro"
-          type="text"
           required
-          onChange={onChange}
+          fullWidth
         />
-        <input
+
+        <TextField
+          sx={{ mb: 2, maxWidth: 400 }}
           name="city"
+          type="text"
+          onChange={onChange}
+          label="Cidade"
           placeholder="Cidade"
-          type="text"
           required
-          onChange={onChange}
+          fullWidth
         />
-        <input
+
+        <TextField
+          sx={{ mb: 2, maxWidth: 400 }}
           name="state"
-          placeholder="Estado"
           type="text"
-          required
           onChange={onChange}
+          label="Estado"
+          placeholder="Estado"
+          placeholder="Estado"
+          required
+          fullWidth
         />
-        <button type="submit">salvar</button>
-        {/* <Typography variant="subtitle1" gutterBottom component="div">
-         <strong>Meu endereço</strong>
-       </Typography>
-       <TextField
-         sx={{ mb: 2, maxWidth: 400 }}
-         label="Logradouro"
-         placeholder="Rua / Av"
-         required
-         fullWidth
-       />
-       <TextField
-         sx={{ mb: 2, maxWidth: 400 }}
-         label="Número"
-         placeholder="Número"
-         required
-         fullWidth
-       />
-       <TextField
-         sx={{ mb: 2, maxWidth: 400 }}
-         label="Complemento"
-         placeholder="Apto / Bloco"
-         required
-         fullWidth
-       />
-       <TextField
-         sx={{ mb: 2, maxWidth: 400 }}
-         label="Bairro"
-         placeholder="Bairro"
-         required
-         fullWidth
-       />
-       <TextField
-         sx={{ mb: 2, maxWidth: 400 }}
-         label="Estado"
-         placeholder="Estado"
-         required
-         fullWidth
-       />
-       <Button
-         sx={{ maxWidth: 400 }}
-         variant="contained"
-         color="primary"
-         fullWidth>Salvar</Button> */}
+
+        <Button
+          sx={{ maxWidth: 400 }}
+          type="submit"
+          variant="contained"
+          color="primary"
+          fullWidth>Salvar</Button>
       </ScreenContainer>
     </form>
   );
