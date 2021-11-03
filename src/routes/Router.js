@@ -9,10 +9,12 @@ import FeedPage from "../pages/FeedPage/FeedPage";
 import RestaurantPage from "../pages/RestaurantPage/RestaurantPage";
 import ChartPage from "../pages/ChartPage/ChartPage";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
+import Header from "../components/Header/Header";
 
 const Router = () => {
   return (
     <BrowserRouter>
+      <Header />
       <Switch>
         <Route exact path={"/login"}>
           <LoginPage />
@@ -38,7 +40,7 @@ const Router = () => {
           <FeedPage />
         </Route>
 
-        <Route exact path={"/restaurant-page"}>
+        <Route exact path={"restaurant/:restaurant"}>
           <RestaurantPage />
         </Route>
 
@@ -46,7 +48,7 @@ const Router = () => {
           <ChartPage />
         </Route>
 
-        <Route exact path={"/profile-page"}>
+        <Route exact path={"profile/:profile"}>
           <ProfilePage />
         </Route>
       </Switch>

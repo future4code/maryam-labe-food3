@@ -4,16 +4,17 @@ import useForm from '../../Hooks/useForm';
 import { useHistory } from 'react-router';
 import axios from 'axios';
 import { base_url } from '../../constants/urls';
-// import { Button, TextField, Typography } from '@mui/material';
+import { goToFeed } from '../../routes/coordinator';
+import { Button, TextField, Typography } from '@mui/material';
 
 const CreateAddressForm = () => {
   const [form, onChange, clear] = useForm({
     street: "",
     number: "",
-    complement: "",
     neighbourhood: "",
     city: "",
-    state: ""
+    state: "",
+    complement: "",
   })
 
   const history = useHistory();
@@ -24,108 +25,104 @@ const CreateAddressForm = () => {
   }
 
   const addAddress = () => {
+    console.log("form", form);
     axios
-      .post(`${base_url}/labe-food3/address`, {
+      .put(`${base_url}/fourFoodA/address`, form, {
         headers:
         {
           "auth": localStorage.getItem("token"),
           "Content-Type": "application/json"
         }
-      }, form)
+      })
       .then(response => {
         alert("Endereço adiconado com sucesso");
-        //colocar função de redirecionar para feed
+        goToFeed(history);
         clear();
       })
       .catch(error => {
         alert("Desculpe, houve um erro");
-        console.log(error)
+        console.log(error.response)
       })
   }
 
   return (
     <form onSubmit={onSubmitForm}>
       <ScreenContainer>
-        <input
+        <Typography variant="subtitle1" gutterBottom component="div">
+          <strong>Meu endereço</strong>
+        </Typography>
+        <TextField
+          sx={{ mb: 2, maxWidth: 400 }}
           name="street"
-          placeholder="Logradouro"
           type="text"
+          onChange={onChange}
+          label="Logradouro"
+          placeholder="Rua / Av"
           required
+          fullWidth
         />
-        <input
+
+        <TextField
+          sx={{ mb: 2, maxWidth: 400 }}
           name="number"
+          type="text"
+          onChange={onChange}
+          label="Número"
           placeholder="Número"
-          type="text"
           required
+          fullWidth
         />
-        <input
+
+        <TextField
+          sx={{ mb: 2, maxWidth: 400 }}
           name="complement"
+          type="text"
+          onChange={onChange}
+          label="Complemento"
           placeholder="Complemento"
-          type="text"
-          required
+          fullWidth
         />
-        <input
+
+        <TextField
+          sx={{ mb: 2, maxWidth: 400 }}
           name="neighbourhood"
+          type="text"
+          onChange={onChange}
+          label="Bairro"
           placeholder="Bairro"
-          type="text"
           required
+          fullWidth
         />
-        <input
+
+        <TextField
+          sx={{ mb: 2, maxWidth: 400 }}
           name="city"
+          type="text"
+          onChange={onChange}
+          label="Cidade"
           placeholder="Cidade"
-          type="text"
           required
+          fullWidth
         />
-        <input
+
+        <TextField
+          sx={{ mb: 2, maxWidth: 400 }}
           name="state"
-          placeholder="Estado"
           type="text"
+          onChange={onChange}
+          label="Estado"
+          placeholder="Estado"
+          placeholder="Estado"
           required
+          fullWidth
         />
-        <button type="submit">salvar</button>
-        {/* <Typography variant="subtitle1" gutterBottom component="div">
-         <strong>Meu endereço</strong>
-       </Typography>
-       <TextField
-         sx={{ mb: 2, maxWidth: 400 }}
-         label="Logradouro"
-         placeholder="Rua / Av"
-         required
-         fullWidth
-       />
-       <TextField
-         sx={{ mb: 2, maxWidth: 400 }}
-         label="Número"
-         placeholder="Número"
-         required
-         fullWidth
-       />
-       <TextField
-         sx={{ mb: 2, maxWidth: 400 }}
-         label="Complemento"
-         placeholder="Apto / Bloco"
-         required
-         fullWidth
-       />
-       <TextField
-         sx={{ mb: 2, maxWidth: 400 }}
-         label="Bairro"
-         placeholder="Bairro"
-         required
-         fullWidth
-       />
-       <TextField
-         sx={{ mb: 2, maxWidth: 400 }}
-         label="Estado"
-         placeholder="Estado"
-         required
-         fullWidth
-       />
-       <Button
-         sx={{ maxWidth: 400 }}
-         variant="contained"
-         color="primary"
-         fullWidth>Salvar</Button> */}
+
+        <Button
+          sx={{ maxWidth: 400 }}
+          type="submit"
+          color="primary"
+          variant="contained"
+          fullWidth>Salvar</Button>
       </ScreenContainer>
     </form>
   );

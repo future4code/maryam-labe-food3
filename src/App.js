@@ -1,15 +1,14 @@
-import React from 'react';
+
+import React from "react";
 import Router from "./routes/Router";
-import CreateAddressPage from './pages/CreateAddressPage/CreateAddressPage';
-import LoginPage from './pages/LoginPage/LoginPage';
-import RestaurantCard from './components/RestaurantCard/RestaurantCard';
-import FeedPage from "./pages/FeedPage/FeedPage";
+import { ThemeProvider } from "@emotion/react";
+import { theme } from "./constants/theme";
 
 function App() {
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <Router />
-    </div>
+    </ThemeProvider>
   );
 }
 
