@@ -1,10 +1,10 @@
 import React from 'react';
-import RestaurantCard from '../../components/RestaurantCard/RestaurantCard';
+import MenuItemCard from '../../components/MenuItemCard/MenuItemCard';
 
 const RestaurantPage = () => {
   return (
     <div>
-      <RestaurantCard />
+      <MenuItemCard />
     </div>
   );
 }
