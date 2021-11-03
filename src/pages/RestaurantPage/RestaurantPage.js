@@ -4,20 +4,17 @@ import { useParams } from 'react-router';
 import axios from 'axios';
 import { base_url } from '../../constants/urls';
 import { headers_token } from '../../constants/headers';
+import RestaurantCard from '../../components/RestaurantCard/RestaurantCard';
 
 const RestaurantPage = () => {
   const [data, setData] = useState({ restaurant: {} });
   const params = useParams();
-  console.log("params2", params);
-  console.log("data", data);
 
   useEffect(() => {
-    console.log("cheguei")
     getRestaurantDetails(`${base_url}/fourFoodA/restaurants/${params.restaurantId}`, headers_token);
   }, []);
 
   const getRestaurantDetails = (url, headers) => {
-    console.log("renderizando")
     axios
       .get(url, headers)
       .then(response => {
@@ -29,9 +26,16 @@ const RestaurantPage = () => {
       })
   }
 
+  const productsCards = data && data.restaurant && data.restaurant.products && data.restaurant.products.map(product => {
+    return (
+      <MenuItemCard product={product} />
+    )
+  })
+
   return (
     <div>
-      <MenuItemCard restaurant={data && data.restaurant} />
+      <RestaurantCard restaurant={data && data.restaurant} />
+      {productsCards}
     </div>
   );
 }
