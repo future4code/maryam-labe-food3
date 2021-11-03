@@ -3,7 +3,7 @@ import useProtectedPage from "../../Hooks/useProtectedPage"
 import useRequestData from "../../Hooks/useRequestData"
 import Footer from "../../components/Footer/Footer"
 import { base_url } from "../../constants/urls"
-import {useHistory} from "react-router";
+import { useHistory } from "react-router";
 import { goToRestaurantDetails } from "../../routes/coordinator"
 import { headers_token } from '../../constants/headers';
 
@@ -18,10 +18,8 @@ import Typography from '@mui/material/Typography';
 const FeedPage = () => {
   // useProtectedPage();
   const history = useHistory();
-
   const [search, setSearch] = useState("");
   const [categorySearch, setCategorySearch] = useState("");
-  const history = useHistory();
 
   const data = useRequestData({}, `${base_url}/fourFoodA/restaurants`);
   const restaurants = data.restaurants
@@ -45,29 +43,29 @@ const FeedPage = () => {
       console.log("restaurante", restaurant)
       return (
         <CardStyled
-          key={restaurant.id} 
+          key={restaurant.id}
           onClick={() => goToRestaurantDetails(history, restaurant.id)}>
-            <CardMedia
-              component="img"
-              height="140"
-              image={restaurant.logoUrl}
-              alt="green iguana"
-            />
-            <CardContent>
-              <Typography 
-                gutterBottom variant="h5" 
-                component="div"
-                color="primary.main">
-                {restaurant.name}
-              </Typography>
-              <DivCardInfo>
-                {restaurant.deliveryTime <= 20 ?
-                  <Typography variant="body1" color="secondary.main">{restaurant.deliveryTime} min</Typography> :
-                  <Typography variant="body1" color="secondary.main">{restaurant.deliveryTime - 10} - {restaurant.deliveryTime} min</Typography>
-                }
-                <Typography variant="body1" color="secondary.main">Frete: R$:{restaurant.shipping},00</Typography>
-              </DivCardInfo>
-            </CardContent>
+          <CardMedia
+            component="img"
+            height="140"
+            image={restaurant.logoUrl}
+            alt="green iguana"
+          />
+          <CardContent>
+            <Typography
+              gutterBottom variant="h5"
+              component="div"
+              color="primary.main">
+              {restaurant.name}
+            </Typography>
+            <DivCardInfo>
+              {restaurant.deliveryTime <= 20 ?
+                <Typography variant="body1" color="secondary.main">{restaurant.deliveryTime} min</Typography> :
+                <Typography variant="body1" color="secondary.main">{restaurant.deliveryTime - 10} - {restaurant.deliveryTime} min</Typography>
+              }
+              <Typography variant="body1" color="secondary.main">Frete: R$:{restaurant.shipping},00</Typography>
+            </DivCardInfo>
+          </CardContent>
         </CardStyled>
       )
     });
@@ -83,7 +81,7 @@ const FeedPage = () => {
   return (
     <div>
       <DivSearch>
-        <SearchIcon color="secondary"/>
+        <SearchIcon color="secondary" />
         <input placeholder={"Restaurante"} onChange={handleSearch} />
       </DivSearch>
       <DivCategory>
