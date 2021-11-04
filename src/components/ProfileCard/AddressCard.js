@@ -1,5 +1,5 @@
 import React from "react";
-import { goToEditAddress } from "../../routes/coordinator";
+import { goToCreateAddress } from "../../routes/coordinator";
 import { useHistory } from "react-router";
 
 const AddressCard = ({ profile }) => {
@@ -8,7 +8,7 @@ const AddressCard = ({ profile }) => {
     <div>
       <div>{profile?.address}</div>
       <div>
-        <button onClick={() => goToEditAddress(history)}>Editar</button>
+        <button onClick={() => goToCreateAddress(history)}>Editar</button>
       </div>
     </div>
   );

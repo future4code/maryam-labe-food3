@@ -29,7 +29,3 @@ export const goToProfile = (history) => {
 export const goToEditProfile = (history) => {
   history.push("/edit-profile");
 };
-
-export const goToEditAddress = (history) => {
-  history.push("/edit-address");
-};

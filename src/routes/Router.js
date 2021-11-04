@@ -3,7 +3,6 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import SignUpPage from "../pages/SignUpPage/SignUpPage";
 import CreateAddressPage from "../pages/CreateAddressPage/CreateAddressPage";
-import EditAddressPage from "../pages/EditAddressPage/EditAddressPage";
 import EditProfilePage from "../pages/EditProfilePage/EditProfilePage";
 import FeedPage from "../pages/FeedPage/FeedPage";
 import RestaurantPage from "../pages/RestaurantPage/RestaurantPage";
@@ -26,10 +25,6 @@ const Router = (props) => {
 
         <Route exact path={"/create-address"}>
           <CreateAddressPage />
-        </Route>
-
-        <Route exact path={"/edit-address"}>
-          <EditAddressPage />
         </Route>
 
         <Route exact path={"/edit-profile"}>
