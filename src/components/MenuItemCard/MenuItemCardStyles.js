@@ -1,16 +1,16 @@
 import styled from "styled-components";
 import { primaryColor } from "../../constants/colors";
 
+
 export const CardContainer = styled.div`
-  min-width: 40%;
-  max-width: 90%;
-  height: 7rem;
+  width: 90%;
+  height: 8rem;
   display: flex;
   position: relative;
   flex-direction: row;
   border-radius: 0.5rem;
   border: 1px solid lightgray;
-  margin: 0.5rem;
+  margin: 0.3rem;
 `
 
 export const ImgWrapper = styled.img`

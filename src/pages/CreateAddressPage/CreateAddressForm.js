@@ -51,7 +51,7 @@ const CreateAddressForm = () => {
   return (
     <form onSubmit={onSubmitForm}>
       <ScreenContainer>
-        <Typography variant="subtitle1" gutterBottom component="div">
+        <Typography sx={{ mb: 2 }} variant="subtitle1" gutterBottom component="div">
           <strong>Meu endereço</strong>
         </Typography>
         <TextField
@@ -121,7 +121,7 @@ const CreateAddressForm = () => {
         />
 
         <Button
-          sx={{ maxWidth: 400 }}
+          sx={{ maxWidth: 400, textTransform: 'none' }}
           type="submit"
           color="primary"
           variant="contained"

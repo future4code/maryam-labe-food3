@@ -30,7 +30,7 @@ const SignUpPage = () => {
     <ScreenContainer>
       <img src={logo} />
       <Typography
-        sx={{ mt: 3 }}
+        sx={{ mt: 3., mb: 3 }}
         variant="subtitle1"
         gutterBottom
         component="div">
@@ -105,7 +105,7 @@ const SignUpPage = () => {
           pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
         />
         <Button
-          sx={{ maxWidth: 400 }}
+          sx={{ maxWidth: 400, textTransform: 'none' }}
           type="submit"
           color="primary"
           variant="contained"
