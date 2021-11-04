@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import MenuItemCard from '../../components/MenuItemCard/MenuItemCard';
 import { useParams } from 'react-router';
 import axios from 'axios';
@@ -8,12 +8,16 @@ import RestaurantCard from '../../components/RestaurantCard/RestaurantCard';
 import { ScreenContainer, SubtitleContainer } from './RestaurantPageStyles';
 import { Typography, Divider } from '@mui/material';
 import useProtectedPage from '../../Hooks/useProtectedPage';
+import { GlobalContext } from '../../context/GlobalContext'
 
 const RestaurantPage = () => {
   useProtectedPage();
 
   const [data, setData] = useState({ restaurant: {} });
   const params = useParams();
+  const {setHeaderName} = useContext(GlobalContext) 
+
+  const pageName = setHeaderName('Restaurante')
 
   useEffect(() => {
     getRestaurantDetails(`${base_url}/fourFoodA/restaurants/${params.restaurantId}`, headers_token);

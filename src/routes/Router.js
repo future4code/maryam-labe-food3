@@ -11,7 +11,7 @@ import ChartPage from "../pages/ChartPage/ChartPage";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import Header from "../components/Header/Header";
 
-const Router = () => {
+const Router = (props) => {
   return (
     <BrowserRouter>
       <Header />
