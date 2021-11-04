@@ -58,7 +58,6 @@ const FeedPage = () => {
             component="img"
             height="140"
             image={restaurant.logoUrl}
-            alt="green iguana"
           />
           <CardContent>
             <Typography

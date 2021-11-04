@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Card from '@mui/material/Card';
-import Typography from '@mui/material/Typography';
 
 export const DivRestaurants = styled.div`
     display: grid;
