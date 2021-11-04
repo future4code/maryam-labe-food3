@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import MenuItemCard from '../../components/MenuItemCard/MenuItemCard';
-import { useParams } from 'react-router';
+import { useParams, useHistory } from 'react-router';
 import axios from 'axios';
 import { base_url } from '../../constants/urls';
 import { headers_token } from '../../constants/headers';
@@ -15,9 +15,11 @@ const RestaurantPage = () => {
 
   const [data, setData] = useState({ restaurant: {} });
   const params = useParams();
-  const { setHeaderName } = useContext(GlobalContext)
+  const {setHeaderName, setChangePage} = useContext(GlobalContext) 
 
-  const pageName = setHeaderName('Restaurante')
+  setChangePage(true)
+
+  setHeaderName('Restaurante')
 
   useEffect(() => {
     getRestaurantDetails(`${base_url}/fourFoodA/restaurants/${params.restaurantId}`, headers_token);

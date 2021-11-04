@@ -1,16 +1,21 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { DivHeader } from './HeaderStyles';
 import { GlobalContext } from '../../context/GlobalContext'
+import Typography from '@mui/material/Typography';
+import { goBack } from '../../routes/coordinator'
+import ArrowButton from '../ArrowButton/ArrowButton'
+import { useHistory } from "react-router";
 
-const Header = () => {
+export default function Header() {
 
-  const {headerName} = useContext(GlobalContext) 
-  
+  const {headerName, changePage} = useContext(GlobalContext) 
+
   return (
     <DivHeader>
-      <p>{headerName}</p>
+          {changePage === true ? <ArrowButton onClick={goBack} /> : <></>}
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            {headerName}
+          </Typography>
     </DivHeader>
   );
 }
-
-export default Header;

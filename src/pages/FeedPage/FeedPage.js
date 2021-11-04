@@ -21,7 +21,7 @@ const FeedPage = () => {
   const [categorySearch, setCategorySearch] = useState("");
   const { setHeaderName } = useContext(GlobalContext)
 
-  const pageName = setHeaderName('Ifuture')
+  setHeaderName('Ifuture')
 
   const data = useRequestData({}, `${base_url}/fourFoodA/restaurants`);
 
