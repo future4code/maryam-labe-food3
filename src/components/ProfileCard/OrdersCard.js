@@ -1,3 +1,4 @@
+import React from "react";
 import { base_url } from "../../constants/urls";
 
 const OrdersCard = ({ orders }) => {
