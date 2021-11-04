@@ -7,8 +7,11 @@ import { headers_token } from '../../constants/headers';
 import RestaurantCard from '../../components/RestaurantCard/RestaurantCard';
 import { ScreenContainer, SubtitleContainer } from './RestaurantPageStyles';
 import { Typography, Divider } from '@mui/material';
+import useProtectedPage from '../../Hooks/useProtectedPage';
 
 const RestaurantPage = () => {
+  useProtectedPage();
+
   const [data, setData] = useState({ restaurant: {} });
   const params = useParams();
 

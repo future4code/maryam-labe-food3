@@ -5,7 +5,7 @@ import { login } from "../../services/SignupLogin";
 import { useHistory } from "react-router";
 import useUnprotectedPage from "../../Hooks/useUnprotectedPage";
 import { Button, TextField, Typography } from '@mui/material';
-import { ScreenContainer } from "./LoginPageStyles";
+import { ScreenContainer, FormContainer, BtnSignUpContainer } from "./LoginPageStyles";
 import logo from "../../assets/red-logo.svg";
 import { goToSignUp } from "../../routes/coordinator";
 
@@ -45,7 +45,7 @@ const LoginPage = () => {
         component="div">
         <strong>Entrar</strong>
       </Typography>
-      <form onSubmit={onSubmitForm}>
+      <FormContainer onSubmit={onSubmitForm}>
         <TextField
           sx={{ mb: 2, maxWidth: 400 }}
           name={"email"}
@@ -76,11 +76,10 @@ const LoginPage = () => {
           color="primary"
           variant="contained"
           fullWidth>Entrar</Button>
-      </form>
+      </FormContainer>
       <Button
         sx={{ mt: 3, textTransform: 'none', color: '#000000' }}
         variant="text"
-        fullWidth
         onClick={() => goToSignUp(history)}
       >Não possui cadastro? Clique aqui</Button>
     </ScreenContainer>
