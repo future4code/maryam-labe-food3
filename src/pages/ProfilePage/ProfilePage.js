@@ -5,6 +5,7 @@ import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import AddressCard from "../../components/ProfileCard/AddressCard";
 import OrdersCard from "../../components/ProfileCard/OrdersCard";
 import useRequestData from "../../Hooks/useRequestData";
+import { ProfilePageContainer } from "./ProfilePageStyles";
 
 const Profile = () => {
   const [profile] = useGetProfile(
@@ -18,12 +19,12 @@ const Profile = () => {
   });
 
   return (
-    <div>
+    <ProfilePageContainer>
       <ProfileCard profile={profile.user} />
       <AddressCard profile={profile.user} />
       {showPastOrders}
       <Footer />
-    </div>
+    </ProfilePageContainer>
   );
 };
 
