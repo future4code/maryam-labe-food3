@@ -7,7 +7,6 @@ import useUnprotectedPage from "../../Hooks/useUnprotectedPage";
 import { Button, TextField, Typography } from '@mui/material';
 import { ScreenContainer, FormContainer, BtnSignUpContainer } from "./LoginPageStyles";
 import logo from "../../assets/red-logo.svg";
-import { goToSignUp } from "../../routes/coordinator";
 
 const LoginPage = () => {
   useUnprotectedPage();
