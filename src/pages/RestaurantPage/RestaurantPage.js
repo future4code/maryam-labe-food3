@@ -44,24 +44,39 @@ const RestaurantPage = () => {
   })
   console.log("categorias filtradas", filteredCategories)
 
-  const filterProductsByCategory = (category, array) => {
+  const renderProductsByCategory = (category, array) => {
     const filteredArray = array.filter(item => item.category === category);
-    return filteredArray;
+    // console.log("filtered array", filteredArray)
+    // return filteredArray;
+
+    const renderedCards = filteredArray.map(product => {
+      return (
+        <MenuItemCard key={product.id} product={product} />
+      )
+    })
+
+    return (
+      <ScreenContainer>
+        <SubtitleContainer>
+          <Typography variant="subtitle1" gutterBottom component="div" sx={{ textAlign: 'left', m: 0, p: 0 }}>
+            <strong>{category}</strong>
+            <Divider fullWidth sx={{ border: 1 }}></Divider>
+          </Typography>
+        </SubtitleContainer>
+        {renderedCards}
+      </ScreenContainer>
+    )
   }
 
-  const renderCards = () => {
-    const listOfProductsByCategory = [];
-    const categoryList = filteredCategories && filteredCategories.map(category => {
-      return filterProductsByCategory(category, filteredCategories)
-    });
-    listOfProductsByCategory.push(categoryList);
-    return listOfProductsByCategory;
-    // for (let category of filteredCategories) {
-    //   const filteredProducts = filterProductsByCategory(category);
-    //   listOfProcutsByCategory.push(filteredProducts);
-    // }
-  }
-  console.log("render cards", renderCards());
+  // const listOfProductsByCategory = [];
+
+  const categoriesList = filteredCategories && filteredCategories.map(category => {
+    return renderProductsByCategory(category, data.restaurant.products)
+  });
+  // listOfProductsByCategory.push(categoriesList);
+
+
+
 
   const productsCards = data && data.restaurant && data.restaurant.products && data.restaurant.products.map(product => {
     return (
@@ -70,16 +85,17 @@ const RestaurantPage = () => {
   })
 
   return (
-    <ScreenContainer>
+    <div>
       <RestaurantCard restaurant={data && data.restaurant} />
-      <SubtitleContainer>
+      {categoriesList}
+      {/* <SubtitleContainer>
         <Typography variant="subtitle1" gutterBottom component="div" sx={{ textAlign: 'left', m: 0, p: 0 }}>
           <strong>Pratos principais</strong>
           <Divider fullWidth sx={{ border: 1 }}></Divider>
         </Typography>
       </SubtitleContainer>
-      {productsCards}
-    </ScreenContainer>
+      {productsCards} */}
+    </div>
   );
 }
 
