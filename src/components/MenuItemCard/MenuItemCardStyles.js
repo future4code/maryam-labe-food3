@@ -1,12 +1,68 @@
 import styled from "styled-components";
+import { primaryColor } from "../../constants/colors";
 
 export const CardContainer = styled.div`
-  border: 1px solid black;
-  border-radius: 20px;
+  max-width: 90%;
+  height: 7rem;
   display: flex;
-  width: 90%;
+  position: relative;
+  flex-direction: row;
+  border-radius: 0.5rem;
+  border: 1px solid lightgray;
+  margin: 0.5rem;
 `
 
 export const ImgWrapper = styled.img`
-  height: 100px;
+  width: 7rem;
+  height: 7rem;
+  object-fit: cover;
+  object-position: 50% 50%;
+  border-bottom-left-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+`
+
+export const TextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  margin: 1rem;
+  width: 80%;
+`
+
+export const BtnRemove = styled.button`
+  color: #e8222e;
+  background-color: white;
+  border: 2px solid #e8222e;
+  border-top-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  height: 1.5rem;
+`
+export const BtnAdd = styled.button`
+  background-color: white;
+  border: 2px solid black;
+  border-top-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  height: 1.5rem;
+`
+export const ContainerCounter = styled.div`
+  width: 1.7rem;
+  height: 1.7rem;
+  color: #e8222e;
+  background-color: white;
+  border: 2px solid #e8222e;
+  border-top-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Roboto;
+`
+
+export const ContainerButton = styled.div`
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
 `

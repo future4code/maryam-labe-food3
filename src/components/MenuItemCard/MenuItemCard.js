@@ -1,34 +1,35 @@
 import React from 'react';
-import { Card } from '@mui/material';
-import { CardActions } from '@mui/material';
-import { CardContent } from '@mui/material';
-import { CardMedia } from '@mui/material';
-import { Button } from '@mui/material';
 import { Typography } from '@mui/material';
+import { CardContainer, ImgWrapper, BtnAdd, BtnRemove, TextContainer, ContainerButton, ContainerCounter } from './MenuItemCardStyles';
 
-const MenuItemCard = () => {
+const MenuItemCard = ({ product }) => {
+  const currency = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  });
+
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        component="img"
-        alt="green iguana"
-        height="140"
-        image="/static/images/cards/contemplative-reptile.jpg"
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Lizard
+    <CardContainer sx={{ maxWidth: 345, boxShadow: 1 }}>
+      <ContainerCounter>
+        2
+      </ContainerCounter>
+      <ImgWrapper src={product.photoUrl} />
+      <TextContainer>
+        <Typography variant="subtitle2" gutterBottom component="div" color="primary">
+          <strong>{product.name}</strong>
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+        <Typography variant="body2" gutterBottom component="div" color="secondary">
+          {product.description}
         </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
+        <Typography variant="subtitle2" gutterBottom component="div">
+          <strong>{currency.format(product.price)}</strong>
+        </Typography>
+        <ContainerButton>
+          <BtnAdd>adicionar</BtnAdd>
+          {/* <BtnRemove>remover</BtnRemove> */}
+        </ContainerButton>
+      </TextContainer>
+    </CardContainer>
   );
 }
 
