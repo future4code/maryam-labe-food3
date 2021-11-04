@@ -1,13 +1,12 @@
 import React from "react";
 import useForm from "../../Hooks/useForm";
-import { goToFeed } from "../../routes/coordinator";
+import { goToFeed, goToSignUp } from "../../routes/coordinator";
 import { login } from "../../services/SignupLogin";
 import { useHistory } from "react-router";
 import useUnprotectedPage from "../../Hooks/useUnprotectedPage";
 import { Button, TextField, Typography } from '@mui/material';
 import { ScreenContainer, FormContainer, BtnSignUpContainer } from "./LoginPageStyles";
 import logo from "../../assets/red-logo.svg";
-import { goToSignUp } from "../../routes/coordinator";
 
 const LoginPage = () => {
   useUnprotectedPage();
@@ -25,15 +24,6 @@ const LoginPage = () => {
     goToFeed(history);
     clearForm();
   };
-
-  const capitalize = (text) => {
-    if (typeof text !== "string") return ""
-    return text.charAt(0).toUpperCase() + text.slice(1)
-  }
-
-  // let btnSignUpText = "Não possui cadastro? Clique aqui";
-  // btnSignUpText = capitalize(btnSignUpText.toLowerCase());
-  // console.log(btnSignUpText);
 
   return (
     <ScreenContainer>
@@ -71,7 +61,7 @@ const LoginPage = () => {
         // pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
         />
         <Button
-          sx={{ maxWidth: 400 }}
+          sx={{ maxWidth: 400, textTransform: 'none' }}
           type="submit"
           color="primary"
           variant="contained"

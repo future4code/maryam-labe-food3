@@ -29,7 +29,6 @@ const RestaurantPage = () => {
     axios
       .get(url, headers)
       .then(response => {
-        console.log("response", response);
         setData(response.data)
       })
       .catch(error => {
@@ -37,23 +36,68 @@ const RestaurantPage = () => {
       })
   }
 
+  const categories = data.restaurant && data.restaurant.products && data.restaurant.products
+    .map(product => {
+      return (product.category)
+    })
+
+  const filteredCategories = categories && categories.filter((item, index) => {
+    return (categories.indexOf(item) === index)
+  })
+  console.log("categorias filtradas", filteredCategories)
+
+  const renderProductsByCategory = (category, array) => {
+    const filteredArray = array.filter(item => item.category === category);
+    // console.log("filtered array", filteredArray)
+    // return filteredArray;
+
+    const renderedCards = filteredArray.map(product => {
+      return (
+        <MenuItemCard key={product.id} product={product} />
+      )
+    })
+
+    return (
+      <ScreenContainer>
+        <SubtitleContainer>
+          <Typography variant="subtitle1" gutterBottom component="div" sx={{ textAlign: 'left', m: 0, p: 0 }}>
+            <strong>{category}</strong>
+            <Divider fullWidth sx={{ border: 1 }}></Divider>
+          </Typography>
+        </SubtitleContainer>
+        {renderedCards}
+      </ScreenContainer>
+    )
+  }
+
+  // const listOfProductsByCategory = [];
+
+  const categoriesList = filteredCategories && filteredCategories.map(category => {
+    return renderProductsByCategory(category, data.restaurant.products)
+  });
+  // listOfProductsByCategory.push(categoriesList);
+
+
+
+
   const productsCards = data && data.restaurant && data.restaurant.products && data.restaurant.products.map(product => {
     return (
-      <MenuItemCard product={product} />
+      <MenuItemCard key={product.id} product={product} />
     )
   })
 
   return (
-    <ScreenContainer>
+    <div>
       <RestaurantCard restaurant={data && data.restaurant} />
-      <SubtitleContainer>
+      {categoriesList}
+      {/* <SubtitleContainer>
         <Typography variant="subtitle1" gutterBottom component="div" sx={{ textAlign: 'left', m: 0, p: 0 }}>
           <strong>Pratos principais</strong>
           <Divider fullWidth sx={{ border: 1 }}></Divider>
         </Typography>
       </SubtitleContainer>
-      {productsCards}
-    </ScreenContainer>
+      {productsCards} */}
+    </div>
   );
 }
 

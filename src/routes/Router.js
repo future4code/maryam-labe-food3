@@ -3,7 +3,6 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import SignUpPage from "../pages/SignUpPage/SignUpPage";
 import CreateAddressPage from "../pages/CreateAddressPage/CreateAddressPage";
-import EditAddressPage from "../pages/EditAddressPage/EditAddressPage";
 import EditProfilePage from "../pages/EditProfilePage/EditProfilePage";
 import FeedPage from "../pages/FeedPage/FeedPage";
 import RestaurantPage from "../pages/RestaurantPage/RestaurantPage";
@@ -28,10 +27,6 @@ const Router = (props) => {
           <CreateAddressPage />
         </Route>
 
-        <Route exact path={"/edit-address"}>
-          <EditAddressPage />
-        </Route>
-
         <Route exact path={"/edit-profile"}>
           <EditProfilePage />
         </Route>
@@ -48,12 +43,12 @@ const Router = (props) => {
           <ChartPage />
         </Route>
 
-        <Route exact path={"/profile/:profile"}>
+        <Route exact path={"/profile"}>
           <ProfilePage />
         </Route>
       </Switch>
     </BrowserRouter>
-  )
+  );
 };
 
 export default Router;
