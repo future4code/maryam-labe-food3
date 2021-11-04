@@ -7,7 +7,7 @@ import { base_url } from "../../constants/urls"
 import { GlobalContext } from '../../context/GlobalContext'
 import { useHistory } from "react-router";
 import { goToRestaurantDetails } from "../../routes/coordinator"
-import { DivSearch, DivCategory, CardStyled, DivCardInfo } from "./FeedPageStyles";
+import { DivSearch, DivCategory, CardStyled, DivCardInfo, DivRestaurant } from "./FeedPageStyles";
 import SearchIcon from '@mui/icons-material/Search';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -19,6 +19,7 @@ const FeedPage = () => {
   const history = useHistory();
   const [search, setSearch] = useState("");
   const [categorySearch, setCategorySearch] = useState("");
+  const [clearFilter, setClearFilter] = useState(false);
   const { setHeaderName } = useContext(GlobalContext)
 
   setHeaderName('Ifuture')
@@ -77,26 +78,36 @@ const FeedPage = () => {
     });
 
   const handleSearch = (event) => {
-    setSearch(event.target.value)
+    setSearch(event.target.value);
+    setClearFilter(true);
   };
 
   const handleCategory = (value) => {
     setCategorySearch(value)
+    setClearFilter(true);
   };
+
+  const clearFilters = () => {
+    setSearch("");
+    setCategorySearch("");
+    setClearFilter(false);
+  }
 
   return (
     <div>
       <DivSearch>
         <SearchIcon color="secondary" />
         <input placeholder={"Restaurante"} onChange={handleSearch} />
-
-      </DivSearch>
+        { clearFilter && 
+        <button onClick={clearFilters}>Limpar Filtros</button>
+        }
+        </DivSearch>
       <DivCategory>
         {restaurantCategory}
       </DivCategory>
-      <div>
+      <DivRestaurant>
         {restaurantComponents && restaurantComponents.length > 0 ? restaurantComponents : <p>Não encontramos :(</p>}
-      </div>
+      </DivRestaurant>
       <Footer />
     </div>
   );
