@@ -7,8 +7,6 @@ import { base_url } from "../../constants/urls"
 import { GlobalContext } from '../../context/GlobalContext'
 import { useHistory } from "react-router";
 import { goToRestaurantDetails } from "../../routes/coordinator"
-import { headers_token } from '../../constants/headers';
-import { DivRestaurants, DivImg } from "./FeedPageStyles";
 import { DivSearch, DivCategory, CardStyled, DivCardInfo } from "./FeedPageStyles";
 import SearchIcon from '@mui/icons-material/Search';
 import CardContent from '@mui/material/CardContent';
