@@ -48,12 +48,12 @@ const Router = () => {
           <ChartPage />
         </Route>
 
-        <Route exact path={"/profile/:profile"}>
+        <Route exact path={"/profile"}>
           <ProfilePage />
         </Route>
       </Switch>
     </BrowserRouter>
-  )
+  );
 };
 
 export default Router;
