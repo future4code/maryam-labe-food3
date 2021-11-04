@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import Paper from '@mui/material/Paper';
 
 export const DivFooter = styled.div`
     border: 1px solid black;
@@ -23,4 +24,7 @@ export const DivButtons = styled.div`
         margin: 0;
         padding: 0;
     }
+`
+export const PaperStyled = styled(Paper)`
+    border: 1px solid #b8b8b8;
 `
