@@ -25,15 +25,6 @@ const LoginPage = () => {
     clearForm();
   };
 
-  const capitalize = (text) => {
-    if (typeof text !== "string") return ""
-    return text.charAt(0).toUpperCase() + text.slice(1)
-  }
-
-  // let btnSignUpText = "Não possui cadastro? Clique aqui";
-  // btnSignUpText = capitalize(btnSignUpText.toLowerCase());
-  // console.log(btnSignUpText);
-
   return (
     <ScreenContainer>
       <img src={logo} />
@@ -70,7 +61,7 @@ const LoginPage = () => {
         // pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
         />
         <Button
-          sx={{ maxWidth: 400 }}
+          sx={{ maxWidth: 400, textTransform: 'none' }}
           type="submit"
           color="primary"
           variant="contained"

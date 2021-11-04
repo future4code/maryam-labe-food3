@@ -9,7 +9,7 @@ const MenuItemCard = ({ product }) => {
   });
 
   return (
-    <CardContainer sx={{ maxWidth: 345, boxShadow: 1 }}>
+    <CardContainer sx={{ boxShadow: 1 }}>
       <ContainerCounter>
         2
       </ContainerCounter>
