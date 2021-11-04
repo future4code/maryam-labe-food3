@@ -15,7 +15,7 @@ export const CardContainer = styled.div`
 
 export const ImgWrapper = styled.img`
   width: 7rem;
-  height: 8rem;
+  height: 7rem;
   object-fit: cover;
   object-position: 50% 50%;
   border-bottom-left-radius: 0.5rem;
@@ -36,17 +36,14 @@ export const BtnRemove = styled.button`
   border: 2px solid ${primaryColor};
   border-top-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
-  height: 2rem;
-  width: 6rem;
+  height: 1.5rem;
 `
 export const BtnAdd = styled.button`
   background-color: white;
   border: 2px solid black;
   border-top-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
-  height: 2rem;
-  width: 6rem;
-
+  height: 1.5rem;
 `
 export const ContainerCounter = styled.div`
   width: 1.7rem;
