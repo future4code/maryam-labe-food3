@@ -33,3 +33,7 @@ export const goToEditProfile = (history) => {
 export const goToEditAddress = (history) => {
   history.push("/edit-address");
 };
+
+export const goBack = (history) => {
+  history.goBack()
+}
