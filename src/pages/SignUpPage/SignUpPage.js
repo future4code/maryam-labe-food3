@@ -2,7 +2,7 @@ import React from "react";
 import useForm from "../../Hooks/useForm";
 import { signUp } from "../../services/SignupLogin";
 import { useHistory } from "react-router";
-import { goToEditAddress } from "../../routes/coordinator";
+import { goToCreateAddress } from "../../routes/coordinator";
 import useUnprotectedPage from "../../Hooks/useUnprotectedPage";
 import { ScreenContainer, FormContainer } from "./SignUpPageStyles";
 import { Button, TextField, Typography } from '@mui/material';
@@ -24,7 +24,7 @@ const SignUpPage = () => {
     e.preventDefault();
     signUp(form, clearForm);
     clearForm();
-    goToEditAddress(history);
+    goToCreateAddress(history);
   };
   return (
     <ScreenContainer>
