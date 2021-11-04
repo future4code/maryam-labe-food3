@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { primaryColor, secondaryColor } from "../../constants/colors";
+import { primaryColor, secondaryColor, neutralColor } from "../../constants/colors";
 
 
 export const CardContainer = styled.div`
@@ -15,7 +15,7 @@ export const CardContainer = styled.div`
 
 export const ImgWrapper = styled.img`
   width: 7rem;
-  height: 7rem;
+  height: 8rem;
   object-fit: cover;
   object-position: 50% 50%;
   border-bottom-left-radius: 0.5rem;
@@ -36,14 +36,17 @@ export const BtnRemove = styled.button`
   border: 2px solid ${primaryColor};
   border-top-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
-  height: 1.5rem;
+  height: 2rem;
+  width: 6rem;
 `
 export const BtnAdd = styled.button`
   background-color: white;
   border: 2px solid black;
   border-top-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
-  height: 1.5rem;
+  height: 2rem;
+  width: 6rem;
+
 `
 export const ContainerCounter = styled.div`
   width: 1.7rem;
@@ -66,4 +69,19 @@ export const ContainerButton = styled.div`
   position: absolute;
   bottom: -1px;
   right: -1px;
+`
+
+export const ContainerAddress = styled.div`
+  background-color: ${neutralColor};
+  width: 100%;
+  height: 4.75rem;
+  padding: 1rem;
+  box-sizing: border-box;
+`
+
+export const ContainerRestaurant = styled.div`
+  width: 100%;
+  height: 6rem;
+  padding: 1rem;
+  box-sizing: border-box;
 `
