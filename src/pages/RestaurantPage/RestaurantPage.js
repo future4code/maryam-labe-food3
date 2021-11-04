@@ -40,20 +40,20 @@ const RestaurantPage = () => {
     return (categories.indexOf(item) === index)
   })
 
-  const filtersByCategory = (category, array) => {
-    const products = [];
-    for (const product of array) {
-      if (product.category = category) products.push(product);
-    }
-    return products;
-  }
+  // const filtersByCategory = (category, array) => {
+  //   const products = [];
+  //   for (const product of array) {
+  //     if (product.category = category) products.push(product);
+  //   }
+  //   return products;
+  // }
 
-  const sortsProducts = () => {
-    for (const category of filteredCategories) {
-      return filtersByCategory(category);
-    }
-  }
-  console.log(sortsProducts());
+  // const sortsProducts = () => {
+  //   for (const category of filteredCategories) {
+  //     return filtersByCategory(category);
+  //   }
+  // }
+  // console.log(sortsProducts());
 
   const productsCards = data && data.restaurant && data.restaurant.products && data.restaurant.products.map(product => {
     return (
