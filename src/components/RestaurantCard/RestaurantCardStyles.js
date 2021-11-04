@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const CardContainer = styled.div`
-  max-width: 90%;
+  min-width: 40%;
+  max-width: 90%
   height: 14rem;
   display: flex;
   flex-direction: column;

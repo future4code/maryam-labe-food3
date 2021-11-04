@@ -13,6 +13,7 @@ const RestaurantPage = () => {
   useProtectedPage();
 
   const [data, setData] = useState({ restaurant: {} });
+  console.log("data", data);
   const params = useParams();
 
   useEffect(() => {
@@ -23,7 +24,6 @@ const RestaurantPage = () => {
     axios
       .get(url, headers)
       .then(response => {
-        console.log("response", response);
         setData(response.data)
       })
       .catch(error => {
@@ -31,9 +31,33 @@ const RestaurantPage = () => {
       })
   }
 
+  const categories = data.restaurant && data.restaurant.products && data.restaurant.products
+    .map(product => {
+      return (product.category)
+    })
+
+  const filteredCategories = categories && categories.filter((item, index) => {
+    return (categories.indexOf(item) === index)
+  })
+
+  const filtersByCategory = (category, array) => {
+    const products = [];
+    for (const product of array) {
+      if (product.category = category) products.push(product);
+    }
+    return products;
+  }
+
+  const sortsProducts = () => {
+    for (const category of filteredCategories) {
+      return filtersByCategory(category);
+    }
+  }
+  console.log(sortsProducts());
+
   const productsCards = data && data.restaurant && data.restaurant.products && data.restaurant.products.map(product => {
     return (
-      <MenuItemCard product={product} />
+      <MenuItemCard key={product.id} product={product} />
     )
   })
 

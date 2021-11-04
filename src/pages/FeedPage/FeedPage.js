@@ -38,7 +38,6 @@ const FeedPage = () => {
       return restaurant.category.toLowerCase().includes(categorySearch.toLowerCase())
     })
     .map((restaurant) => {
-      console.log("restaurante", restaurant)
       return (
         <CardStyled
           key={restaurant.id}

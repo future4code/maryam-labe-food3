@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { primaryColor } from "../../constants/colors";
 
 export const CardContainer = styled.div`
-  max-width: 90%;
+  min-width: 40%;
+  max-width: 90%
   height: 7rem;
   display: flex;
   position: relative;
