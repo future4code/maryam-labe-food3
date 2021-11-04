@@ -10,6 +10,7 @@ import {
   ContainerCounter,
 } from "./MenuItemCardStyles";
 import { GlobalContext } from "../../context/GlobalContext";
+import Footer from "../Footer/Footer";
 
 const MenuItemCard = ({ product }) => {
   const currency = new Intl.NumberFormat("pt-BR", {
@@ -51,10 +52,11 @@ const MenuItemCard = ({ product }) => {
           <strong>{currency.format(product.price)}</strong>
         </Typography>
         <ContainerButton>
-          <BtnAdd onClick={() => addToCart(product.name)}>adicionar</BtnAdd>
+          <BtnAdd onClick={() => addToCart(product)}>adicionar</BtnAdd>
           {/* <BtnRemove>remover</BtnRemove> */}
         </ContainerButton>
       </TextContainer>
+      <Footer />
     </CardContainer>
   );
 };

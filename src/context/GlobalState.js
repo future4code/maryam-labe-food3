@@ -5,13 +5,7 @@ const GlobalState = (props) => {
   const [headerName, setHeaderName] = useState("");
   const [addCart, setAddcart] = useState([]);
 
-  const data = {
-    addCart,
-    setAddcart,
-    headerName,
-    setHeaderName,
-  };
-
+  const data = { addCart, setAddcart, headerName, setHeaderName };
   return (
     <div>
       <GlobalContext.Provider value={data}>
