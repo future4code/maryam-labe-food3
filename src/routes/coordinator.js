@@ -22,8 +22,8 @@ export const goToCart = (history) => {
   history.push("/chart");
 };
 
-export const goToProfile = (history, profile) => {
-  history.push(`/${profile}`);
+export const goToProfile = (history) => {
+  history.push(`/profile`);
 };
 
 export const goToEditProfile = (history) => {

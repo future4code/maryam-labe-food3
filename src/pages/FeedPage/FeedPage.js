@@ -1,4 +1,6 @@
+
 import React, { useState, useContext } from 'react';
+import Footer from "../../components/Footer/Footer";
 import useProtectedPage from "../../Hooks/useProtectedPage"
 import useRequestData from "../../Hooks/useRequestData"
 import Footer from "../../components/Footer/Footer"
@@ -8,6 +10,7 @@ import { DivRestaurants, DivImg } from "./FeedPageStyles";
 import { useHistory } from "react-router";
 import { goToRestaurantDetails } from "../../routes/coordinator"
 import { headers_token } from '../../constants/headers';
+import { DivRestaurants, DivImg } from "./FeedPageStyles";
 import { DivSearch, DivCategory, CardStyled, DivCardInfo } from "./FeedPageStyles";
 import SearchIcon from '@mui/icons-material/Search';
 import CardContent from '@mui/material/CardContent';
@@ -25,14 +28,20 @@ const FeedPage = () => {
   const pageName = setHeaderName('Ifuture')
 
   const data = useRequestData({}, `${base_url}/fourFoodA/restaurants`);
-  const restaurants = data.restaurants
-  console.log("lista de restaurantes", restaurants);
+  
+  const restaurants = data.restaurants;
 
-  const restaurantCategory = restaurants && restaurants
-    .map((restaurant) => {
+  const restaurantCategory =
+    restaurants &&
+    restaurants.map((restaurant) => {
       return (
-        <button onClick={() => handleCategory(restaurant.category)} key={restaurant.id}>{restaurant.category}</button>
-      )
+        <button
+          onClick={() => handleCategory(restaurant.category)}
+          key={restaurant.id}
+        >
+          {restaurant.category}
+        </button>
+      );
     });
 
   const restaurantComponents = restaurants && restaurants
@@ -86,6 +95,7 @@ const FeedPage = () => {
       <DivSearch>
         <SearchIcon color="secondary" />
         <input placeholder={"Restaurante"} onChange={handleSearch} />
+
       </DivSearch>
       <DivCategory>
         {restaurantCategory}

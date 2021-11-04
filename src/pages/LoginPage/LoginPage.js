@@ -1,6 +1,6 @@
 import React from "react";
 import useForm from "../../Hooks/useForm";
-import { goToFeed } from "../../routes/coordinator";
+import { goToFeed, goToSignUp } from "../../routes/coordinator";
 import { login } from "../../services/SignupLogin";
 import { useHistory } from "react-router";
 import useUnprotectedPage from "../../Hooks/useUnprotectedPage";
