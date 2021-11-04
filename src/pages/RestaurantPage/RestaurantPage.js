@@ -14,9 +14,8 @@ const RestaurantPage = () => {
   useProtectedPage();
 
   const [data, setData] = useState({ restaurant: {} });
-  console.log("data", data);
   const params = useParams();
-  const {setHeaderName} = useContext(GlobalContext) 
+  const { setHeaderName } = useContext(GlobalContext)
 
   const pageName = setHeaderName('Restaurante')
 
@@ -43,21 +42,26 @@ const RestaurantPage = () => {
   const filteredCategories = categories && categories.filter((item, index) => {
     return (categories.indexOf(item) === index)
   })
+  console.log("categorias filtradas", filteredCategories)
 
-  // const filtersByCategory = (category, array) => {
-  //   const products = [];
-  //   for (const product of array) {
-  //     if (product.category = category) products.push(product);
-  //   }
-  //   return products;
-  // }
+  const filterProductsByCategory = (category, array) => {
+    const filteredArray = array.filter(item => item.category === category);
+    return filteredArray;
+  }
 
-  // const sortsProducts = () => {
-  //   for (const category of filteredCategories) {
-  //     return filtersByCategory(category);
-  //   }
-  // }
-  // console.log(sortsProducts());
+  const renderCards = () => {
+    const listOfProductsByCategory = [];
+    const categoryList = filteredCategories && filteredCategories.map(category => {
+      return filterProductsByCategory(category, filteredCategories)
+    });
+    listOfProductsByCategory.push(categoryList);
+    return listOfProductsByCategory;
+    // for (let category of filteredCategories) {
+    //   const filteredProducts = filterProductsByCategory(category);
+    //   listOfProcutsByCategory.push(filteredProducts);
+    // }
+  }
+  console.log("render cards", renderCards());
 
   const productsCards = data && data.restaurant && data.restaurant.products && data.restaurant.products.map(product => {
     return (
