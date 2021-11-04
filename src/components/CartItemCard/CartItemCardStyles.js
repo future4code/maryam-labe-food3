@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { primaryColor, secondaryColor } from "../../constants/colors";
+import { primaryColor, secondaryColor, neutralColor } from "../../constants/colors";
 
 
 export const CardContainer = styled.div`
@@ -69,4 +69,19 @@ export const ContainerButton = styled.div`
   position: absolute;
   bottom: -1px;
   right: -1px;
+`
+
+export const ContainerAddress = styled.div`
+  background-color: ${neutralColor};
+  width: 100%;
+  height: 4.75rem;
+  padding: 1rem;
+  box-sizing: border-box;
+`
+
+export const ContainerRestaurant = styled.div`
+  width: 100%;
+  height: 6rem;
+  padding: 1rem;
+  box-sizing: border-box;
 `
