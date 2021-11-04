@@ -1,16 +1,12 @@
 import { base_url } from "../../constants/urls";
-import useRequestData from "../../Hooks/useRequestData";
 
-const OrdersCard = () => {
-  const orders = useRequestData([], `${base_url}/fourFoodA/orders/history`);
-
-  console.log("teste card", orders);
-
-  const showPastOrders = orders.orders?.map((order) => {
-    return <p>{order && order.restaurantName}</p>;
-  });
-
-  return <div>{showPastOrders}</div>;
+const OrdersCard = ({ orders }) => {
+  return (
+    <div>
+      <p>{orders.restaurantName}</p>
+      <p>{orders.totalPrice}</p>
+    </div>
+  );
 };
 
 export default OrdersCard;

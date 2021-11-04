@@ -4,6 +4,7 @@ import { base_url } from "../../constants/urls";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import AddressCard from "../../components/ProfileCard/AddressCard";
 import OrdersCard from "../../components/ProfileCard/OrdersCard";
+import useRequestData from "../../Hooks/useRequestData";
 
 const Profile = () => {
   const [profile] = useGetProfile(
@@ -11,11 +12,16 @@ const Profile = () => {
     `${base_url}/fourFoodA/profile`
   );
 
+  const orders = useRequestData([], `${base_url}/fourFoodA/orders/history`);
+  const showPastOrders = orders.orders?.map((order) => {
+    return <OrdersCard key={order.createdAt} orders={order} />;
+  });
+
   return (
     <div>
       <ProfileCard profile={profile.user} />
       <AddressCard profile={profile.user} />
-      <OrdersCard />
+      {showPastOrders}
       <Footer />
     </div>
   );
