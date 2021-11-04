@@ -4,7 +4,7 @@ import { signUp } from "../../services/SignupLogin";
 import { useHistory } from "react-router";
 import { goToEditAddress } from "../../routes/coordinator";
 import useUnprotectedPage from "../../Hooks/useUnprotectedPage";
-import { ScreenContainer } from "./SignUpPageStyles";
+import { ScreenContainer, FormContainer } from "./SignUpPageStyles";
 import { Button, TextField, Typography } from '@mui/material';
 import logo from "../../assets/red-logo.svg";
 
@@ -36,7 +36,7 @@ const SignUpPage = () => {
         component="div">
         <strong>Cadastrar</strong>
       </Typography>
-      <form onSubmit={onSubmitForm}>
+      <FormContainer onSubmit={onSubmitForm}>
         <TextField
           sx={{ mb: 2, maxWidth: 400 }}
           name={"name"}
@@ -110,7 +110,7 @@ const SignUpPage = () => {
           color="primary"
           variant="contained"
           fullWidth>Criar</Button>
-      </form>
+      </FormContainer>
     </ScreenContainer>
   );
 };

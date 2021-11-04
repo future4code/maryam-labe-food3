@@ -6,8 +6,11 @@ import axios from 'axios';
 import { base_url } from '../../constants/urls';
 import { goToFeed } from '../../routes/coordinator';
 import { Button, TextField, Typography } from '@mui/material';
+import useProtectedPage from '../../Hooks/useProtectedPage';
 
 const CreateAddressForm = () => {
+  useProtectedPage();
+
   const [form, onChange, clear] = useForm({
     street: "",
     number: "",

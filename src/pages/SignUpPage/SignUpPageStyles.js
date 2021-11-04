@@ -4,5 +4,12 @@ export const ScreenContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 4rem 1rem 0 1rem;
+  margin: 1rem auto;
+`
+
+export const FormContainer = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
 `
