@@ -10,22 +10,10 @@ const AddressCard = ({ profile }) => {
   const history = useHistory();
   return (
     <div>
-<<<<<<< HEAD
-      <AddressContainer>
-        <p>Endereço Cadastrado:</p>
-        <p>
-          <b>{profile?.address}</b>
-        </p>
-      </AddressContainer>
-      <ProfileButtonContainer>
-        <button onClick={() => goToEditAddress(history)}>Editar</button>
-      </ProfileButtonContainer>
-=======
       <div>{profile?.address}</div>
       <div>
         <button onClick={() => goToCreateAddress(history)}>Editar</button>
       </div>
->>>>>>> master
     </div>
   );
 };

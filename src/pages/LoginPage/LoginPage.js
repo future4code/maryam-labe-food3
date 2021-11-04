@@ -29,7 +29,6 @@ const LoginPage = () => {
     clearForm();
   };
 
-<<<<<<< HEAD
   const capitalize = (text) => {
     if (typeof text !== "string") return "";
     return text.charAt(0).toUpperCase() + text.slice(1);
@@ -39,8 +38,6 @@ const LoginPage = () => {
   // btnSignUpText = capitalize(btnSignUpText.toLowerCase());
   // console.log(btnSignUpText);
 
-=======
->>>>>>> master
   return (
     <ScreenContainer>
       <img src={logo} />
@@ -78,7 +75,7 @@ const LoginPage = () => {
           // pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
         />
         <Button
-          sx={{ maxWidth: 400, textTransform: 'none' }}
+          sx={{ maxWidth: 400, textTransform: "none" }}
           type="submit"
           color="primary"
           variant="contained"
