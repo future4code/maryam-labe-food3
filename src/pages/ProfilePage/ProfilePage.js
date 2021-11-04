@@ -1,3 +1,4 @@
+import React from "react";
 import Footer from "../../components/Footer/Footer";
 import useGetProfile from "../../services/GetProfile";
 import { base_url } from "../../constants/urls";

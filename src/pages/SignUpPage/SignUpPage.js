@@ -2,7 +2,7 @@ import React from "react";
 import useForm from "../../Hooks/useForm";
 import { signUp } from "../../services/SignupLogin";
 import { useHistory } from "react-router";
-import { goToEditAddress } from "../../routes/coordinator";
+import { goToCreateAddress } from "../../routes/coordinator";
 import useUnprotectedPage from "../../Hooks/useUnprotectedPage";
 import { ScreenContainer, FormContainer } from "./SignUpPageStyles";
 import { Button, TextField, Typography } from '@mui/material';
@@ -24,13 +24,13 @@ const SignUpPage = () => {
     e.preventDefault();
     signUp(form, clearForm);
     clearForm();
-    goToEditAddress(history);
+    goToCreateAddress(history);
   };
   return (
     <ScreenContainer>
       <img src={logo} />
       <Typography
-        sx={{ mt: 3 }}
+        sx={{ mt: 3., mb: 3 }}
         variant="subtitle1"
         gutterBottom
         component="div">
@@ -105,7 +105,7 @@ const SignUpPage = () => {
           pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
         />
         <Button
-          sx={{ maxWidth: 400 }}
+          sx={{ maxWidth: 400, textTransform: 'none' }}
           type="submit"
           color="primary"
           variant="contained"

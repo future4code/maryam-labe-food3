@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import Footer from "../../components/Footer/Footer";
 import useProtectedPage from "../../Hooks/useProtectedPage";
@@ -17,12 +18,32 @@ import SearchIcon from "@mui/icons-material/Search";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+=======
+
+import React, { useState, useContext } from 'react';
+import Footer from "../../components/Footer/Footer";
+import useProtectedPage from "../../Hooks/useProtectedPage"
+import useRequestData from "../../Hooks/useRequestData"
+import { base_url } from "../../constants/urls"
+import { GlobalContext } from '../../context/GlobalContext'
+import { useHistory } from "react-router";
+import { goToRestaurantDetails } from "../../routes/coordinator"
+import { DivSearch, DivCategory, CardStyled, DivCardInfo } from "./FeedPageStyles";
+import SearchIcon from '@mui/icons-material/Search';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+>>>>>>> master
+
 
 const FeedPage = () => {
   useProtectedPage();
   const history = useHistory();
   const [search, setSearch] = useState("");
   const [categorySearch, setCategorySearch] = useState("");
+  const { setHeaderName } = useContext(GlobalContext)
+
+  const pageName = setHeaderName('Ifuture')
 
   const data = useRequestData({}, `${base_url}/fourFoodA/restaurants`);
 
@@ -41,6 +62,7 @@ const FeedPage = () => {
       );
     });
 
+<<<<<<< HEAD
   const restaurantComponents =
     restaurants &&
     restaurants
@@ -93,6 +115,43 @@ const FeedPage = () => {
           </CardStyled>
         );
       });
+=======
+  const restaurantComponents = restaurants && restaurants
+    .filter((restaurant) => {
+      return restaurant.name.toLowerCase().includes(search.toLowerCase())
+    })
+    .filter((restaurant) => {
+      return restaurant.category.toLowerCase().includes(categorySearch.toLowerCase())
+    })
+    .map((restaurant) => {
+      return (
+        <CardStyled
+          key={restaurant.id}
+          onClick={() => goToRestaurantDetails(history, restaurant.id)}>
+          <CardMedia
+            component="img"
+            height="140"
+            image={restaurant.logoUrl}
+          />
+          <CardContent>
+            <Typography
+              gutterBottom variant="h5"
+              component="div"
+              color="primary.main">
+              {restaurant.name}
+            </Typography>
+            <DivCardInfo>
+              {restaurant.deliveryTime <= 20 ?
+                <Typography variant="body1" color="secondary.main">{restaurant.deliveryTime} min</Typography> :
+                <Typography variant="body1" color="secondary.main">{restaurant.deliveryTime - 10} - {restaurant.deliveryTime} min</Typography>
+              }
+              <Typography variant="body1" color="secondary.main">Frete: R$:{restaurant.shipping},00</Typography>
+            </DivCardInfo>
+          </CardContent>
+        </CardStyled>
+      )
+    });
+>>>>>>> master
 
   const handleSearch = (event) => {
     setSearch(event.target.value);

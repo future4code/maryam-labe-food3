@@ -1,4 +1,5 @@
-import { goToEditAddress } from "../../routes/coordinator";
+import React from "react";
+import { goToCreateAddress } from "../../routes/coordinator";
 import { useHistory } from "react-router";
 import {
   AddressContainer,
@@ -9,6 +10,7 @@ const AddressCard = ({ profile }) => {
   const history = useHistory();
   return (
     <div>
+<<<<<<< HEAD
       <AddressContainer>
         <p>Endereço Cadastrado:</p>
         <p>
@@ -18,6 +20,12 @@ const AddressCard = ({ profile }) => {
       <ProfileButtonContainer>
         <button onClick={() => goToEditAddress(history)}>Editar</button>
       </ProfileButtonContainer>
+=======
+      <div>{profile?.address}</div>
+      <div>
+        <button onClick={() => goToCreateAddress(history)}>Editar</button>
+      </div>
+>>>>>>> master
     </div>
   );
 };
