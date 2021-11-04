@@ -1,16 +1,34 @@
 import React from 'react';
-import { CardContainer, ImgWrapper } from './MenuItemCardStyles';
+import { Typography } from '@mui/material';
+import { CardContainer, ImgWrapper, BtnAdd, BtnRemove, TextContainer, ContainerButton, ContainerCounter } from './MenuItemCardStyles';
 
-const MenuItemCard = () => {
+const MenuItemCard = ({ product }) => {
+  const currency = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  });
+
   return (
-    <CardContainer>
-      <ImgWrapper src="https://s2.glbimg.com/9zc9T-9LwXwKG_8XOq_9EF67bSQ=/620x455/e.glbimg.com/og/ed/f/original/2021/04/30/receita-hamburguer-smash-burguer-bacon-cheddaar.jpg" />
-      <div>
-        <h5>Bullger</h5>
-        <p>Pão, carne, queijo, picles e molho</p>
-        <h6>R$20,00</h6>
-        <button>adicionar</button>
-      </div>
+    <CardContainer sx={{ maxWidth: 345, boxShadow: 1 }}>
+      <ContainerCounter>
+        2
+      </ContainerCounter>
+      <ImgWrapper src={product.photoUrl} />
+      <TextContainer>
+        <Typography variant="subtitle2" gutterBottom component="div" color="primary">
+          <strong>{product.name}</strong>
+        </Typography>
+        <Typography variant="body2" gutterBottom component="div" color="secondary">
+          {product.description}
+        </Typography>
+        <Typography variant="subtitle2" gutterBottom component="div">
+          <strong>{currency.format(product.price)}</strong>
+        </Typography>
+        <ContainerButton>
+          <BtnAdd>adicionar</BtnAdd>
+          {/* <BtnRemove>remover</BtnRemove> */}
+        </ContainerButton>
+      </TextContainer>
     </CardContainer>
   );
 }

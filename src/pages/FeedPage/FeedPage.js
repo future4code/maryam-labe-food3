@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useState } from 'react';
 import Footer from "../../components/Footer/Footer";
-import { useState } from "react";
-import useRequestData from "../../Hooks/useRequestData";
-import { base_url } from "../../constants/urls";
+import useProtectedPage from "../../Hooks/useProtectedPage"
+import useRequestData from "../../Hooks/useRequestData"
+import Footer from "../../components/Footer/Footer"
+import { base_url } from "../../constants/urls"
+import { useHistory } from "react-router";
+import { goToRestaurantDetails } from "../../routes/coordinator"
+import { headers_token } from '../../constants/headers';
 import { DivRestaurants, DivImg } from "./FeedPageStyles";
+import { DivSearch, DivCategory, CardStyled, DivCardInfo } from "./FeedPageStyles";
+import SearchIcon from '@mui/icons-material/Search';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
 
 const FeedPage = () => {
-  // useProtectedPage();
+  useProtectedPage();
+  const history = useHistory();
   const [search, setSearch] = useState("");
   const [categorySearch, setCategorySearch] = useState("");
 
   const data = useRequestData({}, `${base_url}/fourFoodA/restaurants`);
+  
   const restaurants = data.restaurants;
 
   const restaurantCategory =
@@ -26,54 +37,65 @@ const FeedPage = () => {
       );
     });
 
-  const restaurantComponents =
-    restaurants &&
-    restaurants
-      .filter((restaurant) => {
-        return restaurant.name.toLowerCase().includes(search.toLowerCase());
-      })
-      .filter((restaurant) => {
-        return restaurant.category
-          .toLowerCase()
-          .includes(categorySearch.toLowerCase());
-      })
-      .map((restaurant) => {
-        return (
-          <DivRestaurants key={restaurant.id}>
-            <DivImg>
-              <img src={restaurant.logoUrl} alt="logo" />
-            </DivImg>
-            <p>{restaurant.name}</p>
-            {restaurant.deliveryTime <= 20 ? (
-              <p>{restaurant.deliveryTime} min</p>
-            ) : (
-              <p>
-                {restaurant.deliveryTime - 10} - {restaurant.deliveryTime} min
-              </p>
-            )}
-            <p>Frete: R$:{restaurant.shipping},00</p>
-          </DivRestaurants>
-        );
-      });
+  const restaurantComponents = restaurants && restaurants
+    .filter((restaurant) => {
+      return restaurant.name.toLowerCase().includes(search.toLowerCase())
+    })
+    .filter((restaurant) => {
+      return restaurant.category.toLowerCase().includes(categorySearch.toLowerCase())
+    })
+    .map((restaurant) => {
+      console.log("restaurante", restaurant)
+      return (
+        <CardStyled
+          key={restaurant.id}
+          onClick={() => goToRestaurantDetails(history, restaurant.id)}>
+          <CardMedia
+            component="img"
+            height="140"
+            image={restaurant.logoUrl}
+            alt="green iguana"
+          />
+          <CardContent>
+            <Typography
+              gutterBottom variant="h5"
+              component="div"
+              color="primary.main">
+              {restaurant.name}
+            </Typography>
+            <DivCardInfo>
+              {restaurant.deliveryTime <= 20 ?
+                <Typography variant="body1" color="secondary.main">{restaurant.deliveryTime} min</Typography> :
+                <Typography variant="body1" color="secondary.main">{restaurant.deliveryTime - 10} - {restaurant.deliveryTime} min</Typography>
+              }
+              <Typography variant="body1" color="secondary.main">Frete: R$:{restaurant.shipping},00</Typography>
+            </DivCardInfo>
+          </CardContent>
+        </CardStyled>
+      )
+    });
 
   const handleSearch = (event) => {
-    setSearch(event.target.value);
+    setSearch(event.target.value)
   };
 
   const handleCategory = (value) => {
-    setCategorySearch(value);
+    setCategorySearch(value)
   };
 
   return (
     <div>
-      <div>
+      <DivSearch>
+        <SearchIcon color="secondary" />
         <input placeholder={"Restaurante"} onChange={handleSearch} />
-      </div>
-      <div>
-        <p>Opções Restaurante:</p>
+
+      </DivSearch>
+      <DivCategory>
         {restaurantCategory}
+      </DivCategory>
+      <div>
+        {restaurantComponents && restaurantComponents.length > 0 ? restaurantComponents : <p>Não encontramos :(</p>}
       </div>
-      <div>{restaurantComponents}</div>
       <Footer />
     </div>
   );

@@ -14,8 +14,8 @@ export const goToFeed = (history) => {
   history.push("/");
 };
 
-export const goToRestaurantDetails = (history, restaurant) => {
-  history.push(`/${restaurant}`);
+export const goToRestaurantDetails = (history, restaurantId) => {
+  history.push(`restaurant/${restaurantId}`);
 };
 
 export const goToCart = (history) => {
