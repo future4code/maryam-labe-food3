@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { primaryColor, secondaryColor } from "../../constants/colors";
+import { primaryColor, secondaryColor, neutralColor } from "../../constants/colors";
 
 export const ProfilePageContainer = styled.div`
   display: flex;
@@ -60,3 +60,46 @@ export const AddressContainer = styled.div`
     letter-spacing: -0.39px;
   }
 `;
+
+export const ContainerAddress = styled.div`
+  display: flex;
+  justify-content: space-between;
+  background-color: ${neutralColor};
+  width: 100%;
+  height: 4.75rem;
+  padding: 1rem;
+  box-sizing: border-box;
+
+  img{
+    margin-top: 1rem;
+  }
+`
+
+export const ContainerUser = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 6rem;
+  padding: 1rem;
+  box-sizing: border-box; 
+
+  img{
+    margin-top: 1rem;
+  }
+`
+
+export const ScreenContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+`
+
+export const SubtitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  align-items: left;
+  margin-top: 0.8rem;
+  margin-bottom: 0.2rem;
+`
