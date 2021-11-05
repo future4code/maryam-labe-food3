@@ -18,9 +18,20 @@ const ChartPage = () => {
     return <ChartCard key={item.id} items={item} />;
   });
 
+  const pricesFiltered = addCart?.map((item) => {
+    return item.price;
+  });
+
+  const prices = pricesFiltered?.reduce((acc, curr) => {
+    return acc + curr;
+  });
+
+  console.log("filtro preco", pricesFiltered);
+
   return (
     <div>
       {showCart}
+      <h1>Total: {prices}</h1>
       <Footer />
     </div>
   );
