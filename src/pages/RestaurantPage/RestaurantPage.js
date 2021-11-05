@@ -9,11 +9,13 @@ import { ScreenContainer, SubtitleContainer } from './RestaurantPageStyles';
 import { Typography, Divider } from '@mui/material';
 import useProtectedPage from '../../Hooks/useProtectedPage';
 import { GlobalContext } from '../../context/GlobalContext'
+import LinearProgress from '@mui/material/LinearProgress';
 
 const RestaurantPage = () => {
   useProtectedPage();
 
   const [data, setData] = useState({ restaurant: {} });
+  const [isLoading, setIsLoading] = useState(false)
   const params = useParams();
   const {setHeaderName, setChangePage, setShowLine} = useContext(GlobalContext) 
 
@@ -24,6 +26,7 @@ const RestaurantPage = () => {
   setShowLine(true)
 
   useEffect(() => {
+    setIsLoading(true)
     getRestaurantDetails(`${base_url}/fourFoodA/restaurants/${params.restaurantId}`, headers_token);
   }, []);
 
@@ -32,9 +35,11 @@ const RestaurantPage = () => {
       .get(url, headers)
       .then(response => {
         setData(response.data)
+        setIsLoading(false)
       })
       .catch(error => {
         console.log(error);
+        setIsLoading(false)
       })
   }
 
@@ -89,17 +94,18 @@ const RestaurantPage = () => {
 
   return (
     <div>
+      { isLoading ? <LinearProgress color="primary" /> : 
       <ScreenContainer>
         <RestaurantCard restaurant={data && data.restaurant} />
-      </ScreenContainer>
-      {categoriesList}
-      {/* <SubtitleContainer>
+      </ScreenContainer> }
+      {categoriesList} 
+      {/* /*{ <SubtitleContainer>
         <Typography variant="subtitle1" gutterBottom component="div" sx={{ textAlign: 'left', m: 0, p: 0 }}>
           <strong>Pratos principais</strong>
           <Divider fullWidth sx={{ border: 1 }}></Divider>
         </Typography>
       </SubtitleContainer>
-      {productsCards} */}
+      {productsCards}}*/}
     </div>
   );
 }
