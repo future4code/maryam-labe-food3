@@ -17,6 +17,8 @@ const RestaurantPage = () => {
   const params = useParams();
   const {setHeaderName, setChangePage, setShowLine} = useContext(GlobalContext) 
 
+  console.log(data)
+
   setChangePage(true)
   setHeaderName('Restaurante')
   setShowLine(true)
@@ -44,7 +46,6 @@ const RestaurantPage = () => {
   const filteredCategories = categories && categories.filter((item, index) => {
     return (categories.indexOf(item) === index)
   })
-  console.log("categorias filtradas", filteredCategories)
 
   const renderProductsByCategory = (category, array) => {
     const filteredArray = array.filter(item => item.category === category);
@@ -88,7 +89,9 @@ const RestaurantPage = () => {
 
   return (
     <div>
-      <RestaurantCard restaurant={data && data.restaurant} />
+      <ScreenContainer>
+        <RestaurantCard restaurant={data && data.restaurant} />
+      </ScreenContainer>
       {categoriesList}
       {/* <SubtitleContainer>
         <Typography variant="subtitle1" gutterBottom component="div" sx={{ textAlign: 'left', m: 0, p: 0 }}>

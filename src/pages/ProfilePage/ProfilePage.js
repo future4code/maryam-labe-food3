@@ -6,7 +6,8 @@ import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import AddressCard from "../../components/ProfileCard/AddressCard";
 import OrdersCard from "../../components/ProfileCard/OrdersCard";
 import useRequestData from "../../Hooks/useRequestData";
-import { GlobalContext } from '../../context/GlobalContext'
+import { ProfilePageContainer } from "./ProfilePageStyles";
+import { GlobalContext } from '../../context/GlobalContext';
 
 const Profile = () => {
 
@@ -27,12 +28,12 @@ const Profile = () => {
   });
 
   return (
-    <div>
+    <ProfilePageContainer>
       <ProfileCard profile={profile.user} />
       <AddressCard profile={profile.user} />
       {showPastOrders}
       <Footer />
-    </div>
+    </ProfilePageContainer>
   );
 };
 

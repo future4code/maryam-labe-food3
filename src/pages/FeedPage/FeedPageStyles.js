@@ -1,12 +1,6 @@
 import styled from "styled-components";
 import Card from '@mui/material/Card';
 
-export const DivRestaurants = styled.div`
-    display: grid;
-    padding: 0 8px;
-    border: 1px solid black;
-    width: 90%;
-`
 export const DivImg = styled.div`
     max-height: 40vh;
     max-width: 90vw;
@@ -31,6 +25,16 @@ export const DivSearch = styled.div`
         font-size: 1rem;
         letter-spacing: -0.39px;
         color: #d0d0d0;
+    }
+
+    button {
+        border: none;
+        border-radius: 8px;
+        color: #ffffff;
+        background-color: #e8222e;
+        height: 60%;
+        width: 20%;
+        font-weight: bold;
     }
 `
 export const DivCategory = styled.div`
@@ -59,4 +63,7 @@ export const CardStyled = styled(Card)`
 export const DivCardInfo = styled.div`
     display: flex;
     justify-content: space-between;
+`
+export const DivRestaurant = styled.div`
+    padding: 4px 20px;
 `

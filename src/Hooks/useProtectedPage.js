@@ -1,3 +1,4 @@
+import React from "react";
 import { useHistory } from "react-router";
 import { useLayoutEffect } from "react";
 import { goToLogin } from "../routes/coordinator";
