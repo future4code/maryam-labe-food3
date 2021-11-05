@@ -16,15 +16,27 @@ import SearchIcon from "@mui/icons-material/Search";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import {
+  DivSearch,
+  DivCategory,
+  CardStyled,
+  DivCardInfo,
+  DivRestaurant,
+} from "./FeedPageStyles";
+import SearchIcon from "@mui/icons-material/Search";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
 
 const FeedPage = () => {
   useProtectedPage();
   const history = useHistory();
   const [search, setSearch] = useState("");
   const [categorySearch, setCategorySearch] = useState("");
+  const [clearFilter, setClearFilter] = useState(false);
   const { setHeaderName } = useContext(GlobalContext);
 
-  const pageName = setHeaderName("Ifuture");
+  setHeaderName("Ifuture");
 
   const data = useRequestData({}, `${base_url}/fourFoodA/restaurants`);
 
@@ -100,6 +112,18 @@ const FeedPage = () => {
 
   const handleCategory = (value) => {
     setCategorySearch(value);
+    setClearFilter(true);
+  };
+
+  const handleCategory = (value) => {
+    setCategorySearch(value);
+    setClearFilter(true);
+  };
+
+  const clearFilters = () => {
+    setSearch("");
+    setCategorySearch("");
+    setClearFilter(false);
   };
 
   return (
@@ -107,15 +131,16 @@ const FeedPage = () => {
       <DivSearch>
         <SearchIcon color="secondary" />
         <input placeholder={"Restaurante"} onChange={handleSearch} />
+        {clearFilter && <button onClick={clearFilters}>Limpar Filtros</button>}
       </DivSearch>
       <DivCategory>{restaurantCategory}</DivCategory>
-      <div>
+      <DivRestaurant>
         {restaurantComponents && restaurantComponents.length > 0 ? (
           restaurantComponents
         ) : (
           <p>Não encontramos :(</p>
         )}
-      </div>
+      </DivRestaurant>
       <Footer />
     </div>
   );
