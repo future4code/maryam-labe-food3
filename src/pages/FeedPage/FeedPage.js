@@ -11,17 +11,7 @@ import {
   DivCategory,
   CardStyled,
   DivCardInfo,
-} from "./FeedPageStyles";
-import SearchIcon from "@mui/icons-material/Search";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import {
-  DivSearch,
-  DivCategory,
-  CardStyled,
-  DivCardInfo,
-  DivRestaurant,
+  DivRestaurant
 } from "./FeedPageStyles";
 import SearchIcon from "@mui/icons-material/Search";
 import CardContent from "@mui/material/CardContent";
@@ -108,11 +98,6 @@ const FeedPage = () => {
 
   const handleSearch = (event) => {
     setSearch(event.target.value);
-  };
-
-  const handleCategory = (value) => {
-    setCategorySearch(value);
-    setClearFilter(true);
   };
 
   const handleCategory = (value) => {
