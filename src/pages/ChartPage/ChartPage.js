@@ -4,9 +4,11 @@ import { GlobalContext } from '../../context/GlobalContext'
 
 const ChartPage = () => {
 
-  const {setHeaderName} = useContext(GlobalContext) 
+  const {setHeaderName, setChangePage, setShowLine} = useContext(GlobalContext) 
 
   setHeaderName('Meu carrinho')
+  setChangePage(false)
+  setShowLine(true)
 
   useProtectedPage();
   return (

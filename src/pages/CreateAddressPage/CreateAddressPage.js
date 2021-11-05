@@ -5,9 +5,11 @@ import { GlobalContext } from '../../context/GlobalContext'
 
 const CreateAddressPage = () => {
 
-  const {setChangePage} = useContext(GlobalContext) 
+  const {setChangePage, setHeaderName, setShowLine} = useContext(GlobalContext) 
 
   setChangePage(true)
+  setHeaderName('')
+  setShowLine(true)
 
   return (
     <div>

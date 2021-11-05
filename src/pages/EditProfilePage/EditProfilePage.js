@@ -4,10 +4,11 @@ import { GlobalContext } from '../../context/GlobalContext'
 
 const EditProfilePage = () => {
 
-  const {setChangePage, setHeaderName} = useContext(GlobalContext) 
+  const {setChangePage, setHeaderName, setShowLine} = useContext(GlobalContext) 
 
   setChangePage(true)
   setHeaderName('Editar')
+  setShowLine(true)
 
   useProtectedPage();
   return (

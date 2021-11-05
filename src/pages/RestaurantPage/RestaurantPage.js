@@ -15,11 +15,11 @@ const RestaurantPage = () => {
 
   const [data, setData] = useState({ restaurant: {} });
   const params = useParams();
-  const {setHeaderName, setChangePage} = useContext(GlobalContext) 
+  const {setHeaderName, setChangePage, setShowLine} = useContext(GlobalContext) 
 
   setChangePage(true)
-
   setHeaderName('Restaurante')
+  setShowLine(true)
 
   useEffect(() => {
     getRestaurantDetails(`${base_url}/fourFoodA/restaurants/${params.restaurantId}`, headers_token);

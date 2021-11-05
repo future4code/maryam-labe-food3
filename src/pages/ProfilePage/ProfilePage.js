@@ -10,9 +10,11 @@ import { GlobalContext } from '../../context/GlobalContext'
 
 const Profile = () => {
 
-  const {setHeaderName} = useContext(GlobalContext) 
+  const {setHeaderName, setChangePage, setShowLine} = useContext(GlobalContext) 
 
   setHeaderName('Meu Perfil')
+  setChangePage(false)
+  setShowLine(true)
 
   const [profile] = useGetProfile(
     { user: {} },

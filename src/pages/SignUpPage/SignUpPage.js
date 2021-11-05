@@ -12,10 +12,11 @@ import { GlobalContext } from '../../context/GlobalContext'
 const SignUpPage = () => {
   useUnprotectedPage();
 
-  const {setChangePage} = useContext(GlobalContext) 
+  const {setChangePage, setShowLine} = useContext(GlobalContext) 
 
   const history = useHistory();
   setChangePage(true)
+  setShowLine(true)
 
   const [form, onChange, clearForm] = useForm({
     name: "",
