@@ -7,7 +7,10 @@ import { goBack } from "../routes/coordinator";
 const GlobalState = (props) => {
   const [headerName, setHeaderName] = useState("");
   const [addCart, setAddcart] = useState([]);
+  const [restaurantInfos, setRestaurantInfos] = useState({});
+  const [paymentMethod, setPaymentMethod] = useState("");
   const [changePage, setChangePage] = useState(false);
+  const [itemsAmount, setItemsAmount] = useState(0);
 
   const history = useHistory();
 
@@ -18,6 +21,12 @@ const GlobalState = (props) => {
     setHeaderName,
     changePage,
     setChangePage,
+    restaurantInfos,
+    setRestaurantInfos,
+    paymentMethod,
+    setPaymentMethod,
+    itemsAmount,
+    setItemsAmount,
   };
   return (
     <div>

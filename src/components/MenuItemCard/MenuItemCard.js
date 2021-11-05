@@ -18,12 +18,26 @@ const MenuItemCard = ({ product }) => {
     currency: "BRL",
   });
 
-  const { addCart, setAddcart } = useContext(GlobalContext);
+  const {
+    addCart,
+    setAddcart,
+    restaurantInfos,
+    setRestaurantInfos,
+    itemsAmount,
+    setItemsAmount,
+  } = useContext(GlobalContext);
 
   const addToCart = (item) => {
     console.log(item);
     const newCart = [...addCart, item];
     setAddcart(newCart);
+    if (addCart.id === item.id) {
+      setItemsAmount(itemsAmount + 1);
+    }
+    setRestaurantInfos({
+      ...restaurantInfos,
+    });
+    console.log("restaurant info funcao", restaurantInfos);
     console.log("cart", addCart);
   };
 

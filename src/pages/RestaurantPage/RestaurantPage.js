@@ -1,90 +1,104 @@
-import React, { useEffect, useState, useContext } from 'react';
-import MenuItemCard from '../../components/MenuItemCard/MenuItemCard';
-import { useParams, useHistory } from 'react-router';
-import axios from 'axios';
-import { base_url } from '../../constants/urls';
-import { headers_token } from '../../constants/headers';
-import RestaurantCard from '../../components/RestaurantCard/RestaurantCard';
-import { ScreenContainer, SubtitleContainer } from './RestaurantPageStyles';
-import { Typography, Divider } from '@mui/material';
-import useProtectedPage from '../../Hooks/useProtectedPage';
-import { GlobalContext } from '../../context/GlobalContext'
+import React, { useEffect, useState, useContext } from "react";
+import MenuItemCard from "../../components/MenuItemCard/MenuItemCard";
+import { useParams, useHistory } from "react-router";
+import axios from "axios";
+import { base_url } from "../../constants/urls";
+import { headers_token } from "../../constants/headers";
+import RestaurantCard from "../../components/RestaurantCard/RestaurantCard";
+import { ScreenContainer, SubtitleContainer } from "./RestaurantPageStyles";
+import { Typography, Divider } from "@mui/material";
+import useProtectedPage from "../../Hooks/useProtectedPage";
+import { GlobalContext } from "../../context/GlobalContext";
 
 const RestaurantPage = () => {
   useProtectedPage();
 
   const [data, setData] = useState({ restaurant: {} });
   const params = useParams();
-  console.log(data)
-  const { setHeaderName, setChangePage } = useContext(GlobalContext)
+  console.log(data);
 
-  setChangePage(true)
+  const { setHeaderName, setChangePage, restaurantInfos, setRestaurantInfos } =
+    useContext(GlobalContext);
 
-  setHeaderName('Restaurante')
+  setChangePage(true);
 
+  setHeaderName("Restaurante");
+  console.log("restaurant global", restaurantInfos);
   useEffect(() => {
-    getRestaurantDetails(`${base_url}/fourFoodA/restaurants/${params.restaurantId}`, headers_token);
+    getRestaurantDetails(
+      `${base_url}/fourFoodA/restaurants/${params.restaurantId}`,
+      headers_token
+    );
   }, []);
 
   const getRestaurantDetails = (url, headers) => {
     axios
       .get(url, headers)
-      .then(response => {
-        setData(response.data)
+      .then((response) => {
+        setData(response.data);
+        setRestaurantInfos(response.data.restaurant);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
-      })
-  }
+      });
+  };
 
-  const categories = data.restaurant && data.restaurant.products && data.restaurant.products
-    .map(product => {
-      return (product.category)
-    })
+  const categories =
+    data.restaurant &&
+    data.restaurant.products &&
+    data.restaurant.products.map((product) => {
+      return product.category;
+    });
 
-  const filteredCategories = categories && categories.filter((item, index) => {
-    return (categories.indexOf(item) === index)
-  })
+  const filteredCategories =
+    categories &&
+    categories.filter((item, index) => {
+      return categories.indexOf(item) === index;
+    });
 
   const renderProductsByCategory = (category, array) => {
-    const filteredArray = array.filter(item => item.category === category);
+    const filteredArray = array.filter((item) => item.category === category);
     // console.log("filtered array", filteredArray)
     // return filteredArray;
 
-    const renderedCards = filteredArray.map(product => {
-      return (
-        <MenuItemCard key={product.id} product={product} />
-      )
-    })
+    const renderedCards = filteredArray.map((product) => {
+      return <MenuItemCard key={product.id} product={product} />;
+    });
 
     return (
       <ScreenContainer>
         <SubtitleContainer>
-          <Typography variant="subtitle1" gutterBottom component="div" sx={{ textAlign: 'left', m: 0, p: 0 }}>
+          <Typography
+            variant="subtitle1"
+            gutterBottom
+            component="div"
+            sx={{ textAlign: "left", m: 0, p: 0 }}
+          >
             <strong>{category}</strong>
             <Divider fullWidth sx={{ border: 1 }}></Divider>
           </Typography>
         </SubtitleContainer>
         {renderedCards}
       </ScreenContainer>
-    )
-  }
+    );
+  };
 
   // const listOfProductsByCategory = [];
 
-  const categoriesList = filteredCategories && filteredCategories.map(category => {
-    return renderProductsByCategory(category, data.restaurant.products)
-  });
+  const categoriesList =
+    filteredCategories &&
+    filteredCategories.map((category) => {
+      return renderProductsByCategory(category, data.restaurant.products);
+    });
   // listOfProductsByCategory.push(categoriesList);
 
-
-
-
-  const productsCards = data && data.restaurant && data.restaurant.products && data.restaurant.products.map(product => {
-    return (
-      <MenuItemCard key={product.id} product={product} />
-    )
-  })
+  const productsCards =
+    data &&
+    data.restaurant &&
+    data.restaurant.products &&
+    data.restaurant.products.map((product) => {
+      return <MenuItemCard key={product.id} product={product} />;
+    });
 
   return (
     <div>
@@ -101,6 +115,6 @@ const RestaurantPage = () => {
       {productsCards} */}
     </div>
   );
-}
+};
 
 export default RestaurantPage;
