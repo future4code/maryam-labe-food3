@@ -3,6 +3,7 @@ import { GlobalContext } from "../../context/GlobalContext";
 import useProtectedPage from "../../Hooks/useProtectedPage";
 
 import Footer from "../../components/Footer/Footer";
+import ChartCard from "../../components/ChartCard";
 
 const ChartPage = () => {
   const { addCart, setAddcart, setHeaderName } = useContext(GlobalContext);
@@ -14,13 +15,7 @@ const ChartPage = () => {
   console.log("pagina carrinho", addCart);
 
   const showCart = addCart?.map((item) => {
-    return (
-      <div key={item.id}>
-        <img src={item.photoUrl} alt="" />
-        <h3>{item.name}</h3>
-        <p>{item.price}</p>
-      </div>
-    );
+    return <ChartCard key={item.id} items={item} />;
   });
 
   return (
