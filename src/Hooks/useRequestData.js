@@ -3,8 +3,10 @@ import axios from "axios";
 
 const useRequestData = (initialData, url) => {
   const [data, setData] = useState(initialData);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true)
     axios
       .get(url, {
         headers: {
@@ -13,13 +15,15 @@ const useRequestData = (initialData, url) => {
       })
       .then((response) => {
         setData(response.data);
+        setIsLoading(false)
       })
       .catch((error) => {
         alert(error.response.data.message);
+        setIsLoading(false)
       });
   }, [url]);
 
-  return data;
+  return [data, isLoading];
 };
 
 export default useRequestData;
