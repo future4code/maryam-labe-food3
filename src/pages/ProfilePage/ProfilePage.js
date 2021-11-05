@@ -7,12 +7,20 @@ import AddressCard from "../../components/ProfileCard/AddressCard";
 import OrdersCard from "../../components/ProfileCard/OrdersCard";
 import useRequestData from "../../Hooks/useRequestData";
 import { GlobalContext } from '../../context/GlobalContext';
-import { ScreenContainer, ContainerAddress, ContainerUser } from "./ProfilePageStyles";
+import { ScreenContainer, ContainerAddress, ContainerUser, SubtitleContainer } from "./ProfilePageStyles";
 import { primaryColor, secondaryColor } from '../../constants/colors';
-import { Typography } from "@mui/material";
+import { Typography, Divider } from "@mui/material";
 import editIcon from "../../assets/edit-icon.svg";
+import OrderHistoryCard from "../../components/OrderHistoryCard/OrderHistoryCard"
 
 const Profile = () => {
+
+  const order = {
+    "totalPrice": 74.5,
+    "restaurantName": "Habibs",
+    "createdAt": 1628378579131,
+    "expiresAt": 1628382179131
+  }
 
   const { setHeaderName, setChangePage, setShowLine } = useContext(GlobalContext)
 
@@ -27,7 +35,8 @@ const Profile = () => {
 
   const orders = useRequestData([], `${base_url}/fourFoodA/orders/history`);
   const showPastOrders = orders.orders?.map((order) => {
-    return <OrdersCard key={order.createdAt} orders={order} />;
+    console.log("order", order)
+    return <OrderHistoryCard key={order.createdAt} order={order} />;
   });
 
   return (
@@ -80,6 +89,14 @@ const Profile = () => {
           <img src={editIcon} />
         </div>
       </ContainerAddress>
+      <SubtitleContainer>
+        <Typography variant="subtitle1" gutterBottom component="div" sx={{ textAlign: 'left', m: 0, p: 0 }}>
+          <strong>Histórico de pedidos</strong>
+          <Divider fullWidth sx={{ border: 1 }}></Divider>
+        </Typography>
+      </SubtitleContainer>
+      <OrderHistoryCard order={order} />
+      {showPastOrders}
     </ScreenContainer>
   );
 };
