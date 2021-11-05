@@ -11,6 +11,7 @@ import {
   DivCategory,
   CardStyled,
   DivCardInfo,
+  DivRestaurant
 } from "./FeedPageStyles";
 import SearchIcon from "@mui/icons-material/Search";
 import CardContent from "@mui/material/CardContent";

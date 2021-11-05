@@ -7,7 +7,7 @@ import AddressCard from "../../components/ProfileCard/AddressCard";
 import OrdersCard from "../../components/ProfileCard/OrdersCard";
 import useRequestData from "../../Hooks/useRequestData";
 import { ProfilePageContainer } from "./ProfilePageStyles";
-import { GlobalContext } from "../../context/GlobalContext";
+import { GlobalContext } from '../../context/GlobalContext';
 
 const Profile = () => {
   const { setHeaderName } = useContext(GlobalContext);
