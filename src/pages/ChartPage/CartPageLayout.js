@@ -9,6 +9,7 @@ import { primaryColor, secondaryColor } from '../../constants/colors';
 
 const CartPageLayout = () => {
   const { setHeaderName } = useContext(GlobalContext)
+  
   const product = {
     category: "Pastel",
     description: "Pastel autêntico, feito na hora!",
