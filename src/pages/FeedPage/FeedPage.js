@@ -24,10 +24,13 @@ const FeedPage = () => {
   const history = useHistory();
   const [search, setSearch] = useState("");
   const [categorySearch, setCategorySearch] = useState("");
-  const [clearFilter, setClearFilter] = useState(false);
-  const { setHeaderName } = useContext(GlobalContext);
+  const { setHeaderName, setChangePage, setShowLine } = useContext(GlobalContext)
 
-  setHeaderName("Ifuture");
+  setHeaderName('Ifuture')
+  setChangePage(false)
+  setShowLine(true)
+
+  const [clearFilter, setClearFilter] = useState(false);
 
   const [data, isLoading] = useRequestData({}, `${base_url}/fourFoodA/restaurants`);
 

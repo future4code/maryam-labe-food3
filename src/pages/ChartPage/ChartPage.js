@@ -1,14 +1,15 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../../context/GlobalContext";
 import useProtectedPage from "../../Hooks/useProtectedPage";
-
 import Footer from "../../components/Footer/Footer";
 import ChartCard from "../../components/ChartCard";
 
 const ChartPage = () => {
-  const { addCart, setAddcart, setHeaderName } = useContext(GlobalContext);
+  const {setHeaderName, setChangePage, setShowLine, addCart, setAddcart} = useContext(GlobalContext) 
 
-  setHeaderName("Meu carrinho");
+  setHeaderName('Meu carrinho')
+  setChangePage(false)
+  setShowLine(true)
 
   useProtectedPage();
 

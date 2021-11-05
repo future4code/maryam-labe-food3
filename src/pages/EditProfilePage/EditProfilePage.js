@@ -10,9 +10,11 @@ import TextField from '@mui/material/TextField';
 const EditProfilePage = () => {
   useProtectedPage();
 
-  const {setChangePage, setHeaderName} = useContext(GlobalContext) 
+  const {setChangePage, setHeaderName, setShowLine} = useContext(GlobalContext) 
+
   setChangePage(true)
   setHeaderName('Editar')
+  setShowLine(true)
 
   const data = useRequestData({}, `${base_url}/fourFoodA/profile`);
   const user = data.user
