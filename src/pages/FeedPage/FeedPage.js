@@ -16,17 +16,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import {
-  DivSearch,
-  DivCategory,
-  CardStyled,
-  DivCardInfo,
-  DivRestaurant,
-} from "./FeedPageStyles";
-import SearchIcon from "@mui/icons-material/Search";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
 
 const FeedPage = () => {
   useProtectedPage();
@@ -115,11 +104,6 @@ const FeedPage = () => {
     setClearFilter(true);
   };
 
-  const handleCategory = (value) => {
-    setCategorySearch(value);
-    setClearFilter(true);
-  };
-
   const clearFilters = () => {
     setSearch("");
     setCategorySearch("");
@@ -134,13 +118,13 @@ const FeedPage = () => {
         {clearFilter && <button onClick={clearFilters}>Limpar Filtros</button>}
       </DivSearch>
       <DivCategory>{restaurantCategory}</DivCategory>
-      <DivRestaurant>
+      {/* <DivRestaurant>
         {restaurantComponents && restaurantComponents.length > 0 ? (
           restaurantComponents
         ) : (
           <p>Não encontramos :(</p>
         )}
-      </DivRestaurant>
+      </DivRestaurant> */}
       <Footer />
     </div>
   );
