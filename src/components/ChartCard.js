@@ -1,12 +1,14 @@
 import React from "react";
 
-const ChartCard = ({ items }) => {
+const ChartCard = ({ name, image, price, amount, removeItem }) => {
   return (
     <div>
-      <div key={items.id}>
-        <img src={items.photoUrl} alt="" />
-        <h3>{items.name}</h3>
-        <p>{items.price}</p>
+      <div>
+        <img src={image} alt={name} />
+        <h3>{name}</h3>
+        <p>{price}</p>
+        <p>Quantidade: {amount}</p>
+        <button onClick={removeItem}>Remover</button>
       </div>
     </div>
   );
