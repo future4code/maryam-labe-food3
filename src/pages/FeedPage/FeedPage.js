@@ -17,18 +17,22 @@ import SearchIcon from "@mui/icons-material/Search";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import LinearProgress from '@mui/material/LinearProgress';
 
 const FeedPage = () => {
   useProtectedPage();
   const history = useHistory();
   const [search, setSearch] = useState("");
   const [categorySearch, setCategorySearch] = useState("");
+  const { setHeaderName, setChangePage, setShowLine } = useContext(GlobalContext)
+
+  setHeaderName('Ifuture')
+  setChangePage(false)
+  setShowLine(true)
+
   const [clearFilter, setClearFilter] = useState(false);
-  const { setHeaderName } = useContext(GlobalContext);
 
-  setHeaderName("Ifuture");
-
-  const data = useRequestData({}, `${base_url}/fourFoodA/restaurants`);
+  const [data, isLoading] = useRequestData({}, `${base_url}/fourFoodA/restaurants`);
 
   const restaurants = data.restaurants;
 
@@ -118,14 +122,21 @@ const FeedPage = () => {
         <input placeholder={"Restaurante"} onChange={handleSearch} />
         {clearFilter && <button onClick={clearFilters}>Limpar Filtros</button>}
       </DivSearch>
+      
       <DivCategory>{restaurantCategory}</DivCategory>
-      <DivRestaurant>
-        {restaurantComponents && restaurantComponents.length > 0 ? (
-          restaurantComponents
-        ) : (
-          <p>Não encontramos :(</p>
-        )}
-      </DivRestaurant>
+      
+      { isLoading ? 
+        ( <LinearProgress color="primary" /> ) :
+        ( 
+          <DivRestaurant>
+          { restaurantComponents && restaurantComponents.length > 0 ? 
+          ( restaurantComponents
+          ) : (
+            <p>Não encontramos :(</p>
+          )}
+          </DivRestaurant> 
+        ) 
+      }
       <Footer />
     </div>
   );

@@ -15,11 +15,15 @@ const ChartPage = () => {
     paymentMethod,
     setPaymentMethod,
     itemsAmount,
+    setChangePage,
+    setShowLine,
   } = useContext(GlobalContext);
 
   const [form, onChange, clearForm] = useForm({});
 
   setHeaderName("Meu carrinho");
+  setChangePage(false);
+  setShowLine(true);
 
   useProtectedPage();
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import useForm from "../../Hooks/useForm";
 import { goToFeed, goToSignUp } from "../../routes/coordinator";
 import { login } from "../../services/SignupLogin";
@@ -11,11 +11,16 @@ import {
   BtnSignUpContainer,
 } from "./LoginPageStyles";
 import logo from "../../assets/red-logo.svg";
+import { GlobalContext } from '../../context/GlobalContext'
 
 const LoginPage = () => {
   useUnprotectedPage();
 
+  const { setChangePage , setShowLine} = useContext(GlobalContext)
   const history = useHistory();
+
+  setChangePage(false)
+  setShowLine(false)
 
   const [form, onChange, clearForm] = useForm({
     email: "",

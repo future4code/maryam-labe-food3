@@ -9,22 +9,27 @@ import { ScreenContainer, SubtitleContainer } from "./RestaurantPageStyles";
 import { Typography, Divider } from "@mui/material";
 import useProtectedPage from "../../Hooks/useProtectedPage";
 import { GlobalContext } from "../../context/GlobalContext";
+import LinearProgress from "@mui/material/LinearProgress";
 
 const RestaurantPage = () => {
   useProtectedPage();
 
   const [data, setData] = useState({ restaurant: {} });
+  const [isLoading, setIsLoading] = useState(false);
   const params = useParams();
-  console.log(data);
-
-  const { setHeaderName, setChangePage, restaurantInfos, setRestaurantInfos } =
+  const { setHeaderName, setChangePage, setShowLine, restaurantInfos } =
     useContext(GlobalContext);
 
+  console.log(data);
+
   setChangePage(true);
+  setHeaderName("Restaurante");
+  setShowLine(true);
 
   setHeaderName("Restaurante");
   console.log("restaurant global", restaurantInfos);
   useEffect(() => {
+    setIsLoading(true);
     getRestaurantDetails(
       `${base_url}/fourFoodA/restaurants/${params.restaurantId}`,
       headers_token
@@ -36,10 +41,11 @@ const RestaurantPage = () => {
       .get(url, headers)
       .then((response) => {
         setData(response.data);
-        setRestaurantInfos(response.data.restaurant);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
+        setIsLoading(false);
       });
   };
 
@@ -102,17 +108,21 @@ const RestaurantPage = () => {
 
   return (
     <div>
-      <ScreenContainer>
-        <RestaurantCard restaurant={data && data.restaurant} />
-      </ScreenContainer>
+      {isLoading ? (
+        <LinearProgress color="primary" />
+      ) : (
+        <ScreenContainer>
+          <RestaurantCard restaurant={data && data.restaurant} />
+        </ScreenContainer>
+      )}
       {categoriesList}
-      {/* <SubtitleContainer>
+      {/* /*{ <SubtitleContainer>
         <Typography variant="subtitle1" gutterBottom component="div" sx={{ textAlign: 'left', m: 0, p: 0 }}>
           <strong>Pratos principais</strong>
           <Divider fullWidth sx={{ border: 1 }}></Divider>
         </Typography>
       </SubtitleContainer>
-      {productsCards} */}
+      {productsCards}}*/}
     </div>
   );
 };
