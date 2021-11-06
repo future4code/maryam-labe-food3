@@ -23,22 +23,27 @@ const MenuItemCard = ({ product }) => {
     setAddcart,
     restaurantInfos,
     setRestaurantInfos,
-    itemsAmount,
     setItemsAmount,
   } = useContext(GlobalContext);
 
-  const addToCart = (item) => {
-    console.log(item);
-    const newCart = [...addCart, item];
-    setAddcart(newCart);
-    if (addCart.id === item.id) {
-      setItemsAmount(itemsAmount + 1);
+  const addToCart = (itemToAdd) => {
+    const position = addCart.findIndex((item) => {
+      return item.id === itemToAdd.id;
+    });
+
+    const newCart = [...addCart];
+
+    if (position === -1) {
+      newCart.push({ ...itemToAdd, amount: 1 });
+    } else {
+      newCart[position].amount += 1;
     }
+
+    setAddcart(newCart);
+    setItemsAmount(newCart.amount);
     setRestaurantInfos({
       ...restaurantInfos,
     });
-    console.log("restaurant info funcao", restaurantInfos);
-    console.log("cart", addCart);
   };
 
   return (

@@ -9,6 +9,9 @@ const GlobalState = (props) => {
   const [addCart, setAddcart] = useState([]);
   const [changePage, setChangePage] = useState(false);
   const [showLine, setShowLine] = useState(true);
+  const [restaurantInfos, setRestaurantInfos] = useState({});
+  const [itemsAmount, setItemsAmount] = useState(0);
+  const [priceToPay, setPriceToPay] = useState(0);
 
   const history = useHistory();
 
@@ -21,6 +24,12 @@ const GlobalState = (props) => {
     setChangePage,
     showLine,
     setShowLine,
+    restaurantInfos,
+    setRestaurantInfos,
+    itemsAmount,
+    setItemsAmount,
+    priceToPay,
+    setPriceToPay,
   };
   return (
     <div>

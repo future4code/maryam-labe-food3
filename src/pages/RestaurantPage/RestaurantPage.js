@@ -17,8 +17,13 @@ const RestaurantPage = () => {
   const [data, setData] = useState({ restaurant: {} });
   const [isLoading, setIsLoading] = useState(false);
   const params = useParams();
-  const { setHeaderName, setChangePage, setShowLine, restaurantInfos } =
-    useContext(GlobalContext);
+  const {
+    setHeaderName,
+    setChangePage,
+    setShowLine,
+    restaurantInfos,
+    setRestaurantInfos,
+  } = useContext(GlobalContext);
 
   console.log(data);
 
@@ -41,6 +46,7 @@ const RestaurantPage = () => {
       .get(url, headers)
       .then((response) => {
         setData(response.data);
+        setRestaurantInfos(response.data.restaurant);
         setIsLoading(false);
       })
       .catch((error) => {

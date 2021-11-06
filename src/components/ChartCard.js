@@ -1,16 +1,14 @@
 import React from "react";
-import { useContext } from "react";
-import { GlobalContext } from "../context/GlobalContext";
 
-const ChartCard = ({ items }) => {
-  const { itemsAmount } = useContext(GlobalContext);
+const ChartCard = ({ name, image, price, amount, removeItem }) => {
   return (
     <div>
-      <div key={items.id}>
-        <img src={items.photoUrl} alt="" />
-        <h3>{items.name}</h3>
-        <p>{items.price}</p>
-        <p>Quantidade: {itemsAmount}</p>
+      <div>
+        <img src={image} alt={name} />
+        <h3>{name}</h3>
+        <p>{price}</p>
+        <p>Quantidade: {amount}</p>
+        <button onClick={removeItem}>Remover</button>
       </div>
     </div>
   );
