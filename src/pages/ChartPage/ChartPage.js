@@ -16,9 +16,20 @@ const ChartPage = () => {
     setShowLine,
     priceToPay,
     setPriceToPay,
+    paymentMethod,
+    setPaymentMethod,
   } = useContext(GlobalContext);
 
-  const [form, onChange, clearForm] = useForm({});
+  const [form, onChange, clearForm] = useForm({
+    produtcts: [
+      {
+        id: "",
+        quantity: 0,
+      },
+    ],
+    paymentMethod: "",
+  });
+
   const deliveryFee = restaurantInfos.shipping;
   setHeaderName("Meu carrinho");
   setChangePage(false);
@@ -87,6 +98,7 @@ const ChartPage = () => {
         <p>Frete: R$ {deliveryFee.toFixed(2)}</p>
       ) : null}
       {priceToPay ? <p>Total: R$ {priceToPay.toFixed(2)}</p> : null}
+
       <Footer />
     </div>
   );
