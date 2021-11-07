@@ -8,6 +8,8 @@ import useForm from "../../Hooks/useForm";
 import { ContainerAddress, ContainerRestaurant } from "../../components/CartItemCard/CartItemCardStyles";
 import { Typography } from "@mui/material";
 import { primaryColor, secondaryColor, neutralColor } from "../../constants/colors";
+import CartItemCard from "../../components/CartItemCard/CartItemCard";
+import PaymentOption from "../../components/PaymentOption/PaymentOption";
 
 const ChartPage = () => {
   useProtectedPage();
@@ -69,16 +71,12 @@ const ChartPage = () => {
     addCart.length === 0 ? (
       <h1>Carrinho Vazio</h1>
     ) : (
-      addCart.map((item) => {
+      addCart.map((product) => {
         return (
-          <ChartCard
-            key={item.id}
-            name={item.name}
-            price={item.price}
-            image={item.photoUrl}
-            amount={item.amount}
-            deliveryFee={deliveryFee}
-            removeItem={() => removeItem(item)}
+          <CartItemCard
+            key={product.id}
+            product={product}
+            removeItem={() => removeItem(product)}
           />
         );
       })
@@ -136,8 +134,8 @@ const ChartPage = () => {
       {deliveryFee && addCart.length > 0 ? (
         <p>Frete: R$ {deliveryFee.toFixed(2)}</p>
       ) : null}
-      {priceToPay ? <p>Total: R$ {priceToPay.toFixed(2)}</p> : null}
-
+      {priceToPay ? <p>SUBTOTAL: R$ {priceToPay.toFixed(2)}</p> : null}
+      <PaymentOption />
       <Footer />
     </div>
   );
