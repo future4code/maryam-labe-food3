@@ -25,6 +25,13 @@ export const DivButtons = styled.div`
         padding: 0;
     }
 `
+
 export const PaperStyled = styled(Paper)`
     border: 1px solid #b8b8b8;
+    height: 3rem;
+`
+
+export const FakeBackground = styled.div`
+  height: 3rem;
+  margin-top: 0.5rem;
 `

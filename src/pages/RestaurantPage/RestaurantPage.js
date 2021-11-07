@@ -70,8 +70,6 @@ const RestaurantPage = () => {
 
   const renderProductsByCategory = (category, array) => {
     const filteredArray = array.filter((item) => item.category === category);
-    // console.log("filtered array", filteredArray)
-    // return filteredArray;
 
     const renderedCards = filteredArray.map((product) => {
       return <MenuItemCard key={product.id} product={product} />;
@@ -95,22 +93,12 @@ const RestaurantPage = () => {
     );
   };
 
-  // const listOfProductsByCategory = [];
-
   const categoriesList =
     filteredCategories &&
     filteredCategories.map((category) => {
       return renderProductsByCategory(category, data.restaurant.products);
     });
-  // listOfProductsByCategory.push(categoriesList);
 
-  const productsCards =
-    data &&
-    data.restaurant &&
-    data.restaurant.products &&
-    data.restaurant.products.map((product) => {
-      return <MenuItemCard key={product.id} product={product} />;
-    });
 
   return (
     <div>
@@ -122,13 +110,6 @@ const RestaurantPage = () => {
         </ScreenContainer>
       )}
       {categoriesList}
-      {/* /*{ <SubtitleContainer>
-        <Typography variant="subtitle1" gutterBottom component="div" sx={{ textAlign: 'left', m: 0, p: 0 }}>
-          <strong>Pratos principais</strong>
-          <Divider fullWidth sx={{ border: 1 }}></Divider>
-        </Typography>
-      </SubtitleContainer>
-      {productsCards}}*/}
     </div>
   );
 };
