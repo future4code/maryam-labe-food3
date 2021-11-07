@@ -38,6 +38,10 @@ export const BtnRemove = styled.button`
   border-bottom-right-radius: 0.5rem;
   height: 2rem;
   width: 6rem;
+  :hover{
+    background-color: #e5e5e5;
+    cursor: pointer;
+  }
 `
 export const BtnAdd = styled.button`
   background-color: white;
@@ -46,7 +50,10 @@ export const BtnAdd = styled.button`
   border-bottom-right-radius: 0.5rem;
   height: 2rem;
   width: 6rem;
-
+  :hover{
+    background-color: #e5e5e5;
+    cursor: pointer;
+  }
 `
 export const ContainerCounter = styled.div`
   width: 1.7rem;

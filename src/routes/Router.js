@@ -9,6 +9,7 @@ import RestaurantPage from "../pages/RestaurantPage/RestaurantPage";
 import ChartPage from "../pages/ChartPage/ChartPage";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import Header from "../components/Header/Header";
+import CartPageLayout from "../pages/ChartPage/CartPageLayout"
 
 const Router = (props) => {
   return (
@@ -45,6 +46,10 @@ const Router = (props) => {
 
         <Route exact path={"/profile"}>
           <ProfilePage />
+        </Route>
+
+        <Route excat path={"/cart-teste"}>
+          <CartPageLayout />
         </Route>
       </Switch>
     </BrowserRouter>
