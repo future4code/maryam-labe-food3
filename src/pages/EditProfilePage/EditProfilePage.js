@@ -10,7 +10,7 @@ import TextField from '@mui/material/TextField';
 const EditProfilePage = () => {
   useProtectedPage();
 
-  const {setChangePage, setHeaderName, setShowLine} = useContext(GlobalContext) 
+  const { setChangePage, setHeaderName, setShowLine } = useContext(GlobalContext)
 
   setChangePage(true)
   setHeaderName('Editar')
@@ -18,34 +18,35 @@ const EditProfilePage = () => {
 
   const data = useRequestData({}, `${base_url}/fourFoodA/profile`);
   const user = data.user
-  
+  console.log(user)
+
   return (
     <ContainerEditProfile>
       <DivEditProfile>
         <div>
           <TextField
-              required
-              id="outlined-required"
-              label="Nome"
-              defaultValue="Nome"
-            />
+            required
+            id="outlined-required"
+            label="Nome"
+            defaultValue="Nome"
+          />
         </div>
         <div>
           <TextField
-              required
-              id="outlined-required"
-              label="E-mail"
-              defaultValue="email"
-            />
+            required
+            id="outlined-required"
+            label="E-mail"
+            defaultValue="email"
+          />
         </div>
         <div>
-            <TextField
-              required
-              id="outlined-required"
-              label="CPF"
-              defaultValue="555.658.477-55"
-              inputProps={{ pattern: "/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/" }}
-            />
+          <TextField
+            required
+            id="outlined-required"
+            label="CPF"
+            defaultValue="555.658.477-55"
+            inputProps={{ pattern: "/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/" }}
+          />
         </div>
         <div>
           <StyledButton variant="contained">Salvar</StyledButton>

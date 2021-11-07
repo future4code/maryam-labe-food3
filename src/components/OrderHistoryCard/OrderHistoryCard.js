@@ -17,7 +17,7 @@ const OrderHistoryCard = ({ order }) => {
         component="div"
         color="primary"
       >
-        <strong>{order.restaurantName}</strong>
+        <strong>{order?.restaurantName}</strong>
       </Typography>
       <Typography
         variant="body2"
@@ -25,10 +25,10 @@ const OrderHistoryCard = ({ order }) => {
         component="div"
         color="secondary"
       >
-        {order.createdAt}
+        {order?.createdAt}
       </Typography>
       <Typography variant="subtitle2" gutterBottom component="div">
-        <strong>{currency.format(order.totalPrice)}</strong>
+        <strong>{currency.format(order?.totalPrice)}</strong>
       </Typography>
       <Footer />
     </CardContainer>
