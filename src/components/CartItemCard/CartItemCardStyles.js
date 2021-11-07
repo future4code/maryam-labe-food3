@@ -84,4 +84,5 @@ export const ContainerRestaurant = styled.div`
   height: 6rem;
   padding: 1rem;
   box-sizing: border-box;
+  margin-bottom: 1rem;
 `

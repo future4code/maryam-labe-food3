@@ -5,8 +5,15 @@ import AddressCard from "../../components/ProfileCard/AddressCard";
 import Footer from "../../components/Footer/Footer";
 import ChartCard from "../../components/ChartCard";
 import useForm from "../../Hooks/useForm";
+import { ContainerAddress, ContainerRestaurant } from "../../components/CartItemCard/CartItemCardStyles";
+import { Typography } from "@mui/material";
+import { primaryColor, secondaryColor, neutralColor } from "../../constants/colors";
+import CartItemCard from "../../components/CartItemCard/CartItemCard";
+import PaymentOption from "../../components/PaymentOption/PaymentOption";
 
 const ChartPage = () => {
+  useProtectedPage();
+
   const {
     addCart,
     setAddcart,
@@ -35,7 +42,6 @@ const ChartPage = () => {
   setChangePage(false);
   setShowLine(true);
 
-  useProtectedPage();
 
   useEffect(() => {
     let newPrice = 0;
@@ -65,16 +71,12 @@ const ChartPage = () => {
     addCart.length === 0 ? (
       <h1>Carrinho Vazio</h1>
     ) : (
-      addCart.map((item) => {
+      addCart.map((product) => {
         return (
-          <ChartCard
-            key={item.id}
-            name={item.name}
-            price={item.price}
-            image={item.photoUrl}
-            amount={item.amount}
-            deliveryFee={deliveryFee}
-            removeItem={() => removeItem(item)}
+          <CartItemCard
+            key={product.id}
+            product={product}
+            removeItem={() => removeItem(product)}
           />
         );
       })
@@ -82,23 +84,58 @@ const ChartPage = () => {
 
   return (
     <div>
-      {addCart > 0 ? <AddressCard /> : null}
-      {restaurantInfos && addCart.length > 0 ? (
-        <p>{restaurantInfos.name}</p>
-      ) : null}
-      {restaurantInfos && addCart.length > 0 ? (
-        <p>{restaurantInfos.address}</p>
-      ) : null}
-      {restaurantInfos && addCart.length > 0 ? (
-        <p>{restaurantInfos.deliveryTime} Min </p>
-      ) : null}
+      <ContainerAddress>
+        <Typography
+          variant="body1"
+          gutterBottom component="div"
+          color={secondaryColor}>
+          Endereço de entrega
+        </Typography>
+        <Typography
+          sx={{ lineHeight: 0.5 }}
+          variant="body1"
+          gutterBottom
+          component="div">
+          Rua blablabla
+        </Typography>
+      </ContainerAddress>
+      <ContainerRestaurant>
+        {restaurantInfos && addCart.length > 0 ? (
+          <Typography
+            variant="body1"
+            gutterBottom
+            component="div" color={primaryColor}>
+            {restaurantInfos.name}
+          </Typography>
+        ) : null}
+        {restaurantInfos && addCart.length > 0 ? (
+          <Typography
+            sx={{ lineHeight: 1 }}
+            variant="body1"
+            gutterBottom
+            component="div"
+            color={secondaryColor}>
+            {restaurantInfos.address}
+          </Typography>
+        ) : null}
+        {restaurantInfos && addCart.length > 0 ? (
+          <Typography
+            sx={{ lineHeight: 1 }}
+            variant="body1"
+            gutterBottom component="div"
+            color={secondaryColor}>
+            {restaurantInfos.deliveryTime} min
+          </Typography>
+        ) : null}
+      </ContainerRestaurant>
+      {/* {addCart > 0 ? <AddressCard /> : null} */}
       {showCart}
       {console.log("deliveryfee", deliveryFee)}
       {deliveryFee && addCart.length > 0 ? (
         <p>Frete: R$ {deliveryFee.toFixed(2)}</p>
       ) : null}
-      {priceToPay ? <p>Total: R$ {priceToPay.toFixed(2)}</p> : null}
-
+      {priceToPay ? <p>SUBTOTAL: R$ {priceToPay.toFixed(2)}</p> : null}
+      <PaymentOption />
       <Footer />
     </div>
   );

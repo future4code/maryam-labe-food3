@@ -2,7 +2,7 @@ import React from 'react';
 import { Typography } from '@mui/material';
 import { CardContainer, ImgWrapper, BtnAdd, BtnRemove, TextContainer, ContainerButton, ContainerCounter } from './CartItemCardStyles';
 
-const CartItemCard = ({ product }) => {
+const CartItemCard = ({ product, removeItem }) => {
   const currency = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
@@ -25,8 +25,7 @@ const CartItemCard = ({ product }) => {
           <strong>{currency.format(product.price)}</strong>
         </Typography>
         <ContainerButton>
-          <BtnAdd>adicionar</BtnAdd>
-          {/* <BtnRemove>remover</BtnRemove> */}
+          <BtnRemove onClick={removeItem}>remover</BtnRemove>
         </ContainerButton>
       </TextContainer>
     </CardContainer>
