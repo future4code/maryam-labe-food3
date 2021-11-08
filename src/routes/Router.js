@@ -2,11 +2,11 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import SignUpPage from "../pages/SignUpPage/SignUpPage";
-import CreateAddressPage from "../pages/CreateAddressPage/CreateAddressPage";
+import AddAddressPage from "../pages/AddAddressPage/AddAddressPage";
 import EditProfilePage from "../pages/EditProfilePage/EditProfilePage";
 import FeedPage from "../pages/FeedPage/FeedPage";
 import RestaurantPage from "../pages/RestaurantPage/RestaurantPage";
-import ChartPage from "../pages/ChartPage/ChartPage";
+import ChartPage from "../pages/CartPage/CartPage";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import Header from "../components/Header/Header";
 import styled from "styled-components"
@@ -20,15 +20,15 @@ const Router = (props) => {
           <LoginPage />
         </Route>
 
-        <Route exact path={"/signUp"}>
+        <Route exact path={"/cadastro"}>
           <SignUpPage />
         </Route>
 
-        <Route exact path={"/create-address"}>
-          <CreateAddressPage />
+        <Route exact path={"/adicionar-endereco"}>
+          <AddAddressPage />
         </Route>
 
-        <Route exact path={"/edit-profile"}>
+        <Route exact path={"/editar-perfil"}>
           <EditProfilePage />
         </Route>
 
@@ -36,15 +36,15 @@ const Router = (props) => {
           <FeedPage />
         </Route>
 
-        <Route exact path={"/restaurant/:restaurantId"}>
+        <Route exact path={"/restaurante/:restaurantId"}>
           <RestaurantPage />
         </Route>
 
-        <Route exact path={"/chart"}>
+        <Route exact path={"/carrinho"}>
           <ChartPage />
         </Route>
 
-        <Route exact path={"/profile"}>
+        <Route exact path={"/perfil"}>
           <ProfilePage />
         </Route>
       </Switch>
