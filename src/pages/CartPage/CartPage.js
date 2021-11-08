@@ -3,14 +3,20 @@ import { GlobalContext } from "../../context/GlobalContext";
 import useProtectedPage from "../../Hooks/useProtectedPage";
 import AddressCard from "../../components/ProfileCard/AddressCard";
 import Footer from "../../components/Footer/Footer";
-import ChartCard from "../../components/ChartCard";
 import useForm from "../../Hooks/useForm";
-import { ContainerAddress, ContainerRestaurant } from "../../components/CartItemCard/CartItemCardStyles";
+import {
+  ContainerAddress,
+  ContainerRestaurant,
+} from "../../components/CartItemCard/CartItemCardStyles";
 import { Typography } from "@mui/material";
-import { primaryColor, secondaryColor, neutralColor } from "../../constants/colors";
+import {
+  primaryColor,
+  secondaryColor,
+  neutralColor,
+} from "../../constants/colors";
 import CartItemCard from "../../components/CartItemCard/CartItemCard";
 import PaymentOption from "../../components/PaymentOption/PaymentOption";
-import { FakeBackground } from "./CartPageStyles"
+import { FakeBackground } from "./CartPageStyles";
 
 const ChartPage = () => {
   useProtectedPage();
@@ -28,22 +34,22 @@ const ChartPage = () => {
     setPaymentMethod,
   } = useContext(GlobalContext);
 
-  const [form, onChange, clearForm] = useForm({
-    produtcts: [
-      {
-        id: "",
-        quantity: 0,
-      },
-    ],
-    paymentMethod: "",
-  });
+  // const [form, onChange, clearForm] = useForm({
+  //   produtcts: [
+  //     {
+  //       id: addCart[0].id,
+  //       quantity: addCart[0].amount,
+  //     },
+  //   ],
+  //   paymentMethod: "",
+  // });
 
   const deliveryFee = restaurantInfos.shipping;
   setHeaderName("Meu carrinho");
   setChangePage(false);
   setShowLine(true);
 
-
+  // console.log("addCart:", addCart[0].id, "addCart amount:", addCart[0].amount);
   useEffect(() => {
     let newPrice = 0;
     addCart.forEach((item) => {
@@ -77,6 +83,7 @@ const ChartPage = () => {
           <CartItemCard
             key={product.id}
             product={product}
+            amount={product.amount}
             removeItem={() => removeItem(product)}
           />
         );
@@ -88,15 +95,18 @@ const ChartPage = () => {
       <ContainerAddress>
         <Typography
           variant="body1"
-          gutterBottom component="div"
-          color={secondaryColor}>
+          gutterBottom
+          component="div"
+          color={secondaryColor}
+        >
           Endereço de entrega
         </Typography>
         <Typography
           sx={{ lineHeight: 0.5 }}
           variant="body1"
           gutterBottom
-          component="div">
+          component="div"
+        >
           Rua blablabla
         </Typography>
       </ContainerAddress>
@@ -105,7 +115,9 @@ const ChartPage = () => {
           <Typography
             variant="body1"
             gutterBottom
-            component="div" color={primaryColor}>
+            component="div"
+            color={primaryColor}
+          >
             {restaurantInfos.name}
           </Typography>
         ) : null}
@@ -115,7 +127,8 @@ const ChartPage = () => {
             variant="body1"
             gutterBottom
             component="div"
-            color={secondaryColor}>
+            color={secondaryColor}
+          >
             {restaurantInfos.address}
           </Typography>
         ) : null}
@@ -123,15 +136,17 @@ const ChartPage = () => {
           <Typography
             sx={{ lineHeight: 1 }}
             variant="body1"
-            gutterBottom component="div"
-            color={secondaryColor}>
+            gutterBottom
+            component="div"
+            color={secondaryColor}
+          >
             {restaurantInfos.deliveryTime} min
           </Typography>
         ) : null}
       </ContainerRestaurant>
-      {/* {addCart > 0 ? <AddressCard /> : null} */}
+      {/* {addCart.length > 0 ? <AddressCard /> : null} */}
       {showCart}
-      {console.log("deliveryfee", deliveryFee)}
+
       {deliveryFee && addCart.length > 0 ? (
         <p>Frete: R$ {deliveryFee.toFixed(2)}</p>
       ) : null}
