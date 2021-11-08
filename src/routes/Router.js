@@ -9,8 +9,7 @@ import RestaurantPage from "../pages/RestaurantPage/RestaurantPage";
 import ChartPage from "../pages/CartPage/CartPage";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import Header from "../components/Header/Header";
-import styled from "styled-components"
-
+import Footer from "../components/Footer/Footer";
 const Router = (props) => {
   return (
     <BrowserRouter>
@@ -47,6 +46,7 @@ const Router = (props) => {
         <Route exact path={"/perfil"}>
           <ProfilePage />
         </Route>
+        <Footer />
       </Switch>
     </BrowserRouter>
   );

@@ -6,11 +6,13 @@ import Footer from "../../components/Footer/Footer";
 import ChartCard from "../../components/ChartCard";
 import useForm from "../../Hooks/useForm";
 import { ContainerAddress, ContainerRestaurant } from "../../components/CartItemCard/CartItemCardStyles";
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { primaryColor, secondaryColor, neutralColor } from "../../constants/colors";
 import CartItemCard from "../../components/CartItemCard/CartItemCard";
 import PaymentOption from "../../components/PaymentOption/PaymentOption";
-import { FakeBackground } from "./CartPageStyles"
+import axios from "axios";
+import { headers_token } from "../../constants/headers";
+import { base_url } from "../../constants/urls";
 
 const ChartPage = () => {
   useProtectedPage();
@@ -26,18 +28,31 @@ const ChartPage = () => {
     setPriceToPay,
     paymentMethod,
     setPaymentMethod,
+    user,
   } = useContext(GlobalContext);
 
-  const [form, onChange, clearForm] = useForm({
-    produtcts: [
+  // const [form, onChange, clearForm] = useForm({
+  //   produtcts: [
+  //     {
+  //       id: "",
+  //       quantity: 0,
+  //     },
+  //   ],
+  //   paymentMethod: "creditcard",
+  // });
+
+  const order = {
+    products: [
       {
         id: "",
         quantity: 0,
       },
     ],
-    paymentMethod: "",
-  });
+    paymentMethod: "creditcard",
+  }
 
+  // console.log("form", form)
+  console.log("addCart", addCart)
   const deliveryFee = restaurantInfos.shipping;
   setHeaderName("Meu carrinho");
   setChangePage(false);
@@ -83,6 +98,33 @@ const ChartPage = () => {
       })
     );
 
+  const addProductToPlaceList = (product) => {
+    order.products.push({
+      id: product.id,
+      quantitity: product.quantity
+    })
+  }
+
+  const placeOrder = () => {
+    const body = addCart?.map(item => {
+      return (
+        addProductToPlaceList(item)
+      )
+    })
+    console.log("body", body)
+    const restaurandId = "1";
+
+    axios
+      .post(`${base_url}/fourFoodA/restaurants/${restaurandId}/order`, body, headers_token)
+      .then(response => {
+        alert("Pedido enviado com sucesso")
+      })
+      .catch(error => {
+        alert("Houve um erro")
+        console.log(error)
+      })
+  }
+
   return (
     <div>
       <ContainerAddress>
@@ -97,7 +139,7 @@ const ChartPage = () => {
           variant="body1"
           gutterBottom
           component="div">
-          Rua blablabla
+          {user.address}
         </Typography>
       </ContainerAddress>
       <ContainerRestaurant>
@@ -137,6 +179,16 @@ const ChartPage = () => {
       ) : null}
       {priceToPay ? <p>SUBTOTAL: R$ {priceToPay.toFixed(2)}</p> : null}
       <PaymentOption />
+      <Button
+        sx={{ maxWidth: 400, textTransform: "none" }}
+        type="submit"
+        color="primary"
+        variant="contained"
+        fullWidth
+        onClick={() => placeOrder()}
+      >
+        Confirmar
+      </Button>
       <Footer />
     </div>
   );
