@@ -10,7 +10,7 @@ import { Typography } from "@mui/material";
 import { primaryColor, secondaryColor, neutralColor } from "../../constants/colors";
 import CartItemCard from "../../components/CartItemCard/CartItemCard";
 import PaymentOption from "../../components/PaymentOption/PaymentOption";
-import { FakeBackground } from "./ChartPageStyles"
+import { FakeBackground } from "./CartPageStyles"
 
 const ChartPage = () => {
   useProtectedPage();

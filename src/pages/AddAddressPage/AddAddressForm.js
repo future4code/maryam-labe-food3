@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScreenContainer } from './CreateAddressPageStyles';
+import { ScreenContainer } from './AddAddressPageStyles';
 import useForm from '../../Hooks/useForm';
 import { useHistory } from 'react-router';
 import axios from 'axios';

@@ -3,11 +3,11 @@ export const goToLogin = (history) => {
 };
 
 export const goToSignUp = (history) => {
-  history.push("/signUp");
+  history.push("/cadastro");
 };
 
 export const goToCreateAddress = (history) => {
-  history.push("/create-address");
+  history.push("/adicionar-endereco");
 };
 
 export const goToFeed = (history) => {
@@ -15,19 +15,19 @@ export const goToFeed = (history) => {
 };
 
 export const goToRestaurantDetails = (history, restaurantId) => {
-  history.push(`restaurant/${restaurantId}`);
+  history.push(`restaurante/${restaurantId}`);
 };
 
 export const goToCart = (history) => {
-  history.push("/chart");
+  history.push("/carrinho");
 };
 
 export const goToProfile = (history) => {
-  history.push(`/profile`);
+  history.push(`/perfil`);
 };
 
 export const goToEditProfile = (history) => {
-  history.push("/edit-profile");
+  history.push("/editar-perfil");
 };
 
 
