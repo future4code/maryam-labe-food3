@@ -1,24 +1,40 @@
-import React from 'react';
-import { Typography } from '@mui/material';
-import { CardContainer, ImgWrapper, BtnAdd, BtnRemove, TextContainer, ContainerButton, ContainerCounter } from './CartItemCardStyles';
+import React from "react";
+import { Typography } from "@mui/material";
+import {
+  CardContainer,
+  ImgWrapper,
+  BtnAdd,
+  BtnRemove,
+  TextContainer,
+  ContainerButton,
+  ContainerCounter,
+} from "./CartItemCardStyles";
 
-const CartItemCard = ({ product, removeItem }) => {
-  const currency = new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
+const CartItemCard = ({ product, removeItem, amount }) => {
+  const currency = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
   });
 
   return (
     <CardContainer sx={{ boxShadow: 1 }}>
-      <ContainerCounter>
-        2
-      </ContainerCounter>
+      <ContainerCounter>{amount}</ContainerCounter>
       <ImgWrapper src={product.photoUrl} />
       <TextContainer>
-        <Typography variant="subtitle2" gutterBottom component="div" color="primary">
+        <Typography
+          variant="subtitle2"
+          gutterBottom
+          component="div"
+          color="primary"
+        >
           <strong>{product.name}</strong>
         </Typography>
-        <Typography variant="body2" gutterBottom component="div" color="secondary">
+        <Typography
+          variant="body2"
+          gutterBottom
+          component="div"
+          color="secondary"
+        >
           {product.description}
         </Typography>
         <Typography variant="subtitle2" gutterBottom component="div">
@@ -30,6 +46,6 @@ const CartItemCard = ({ product, removeItem }) => {
       </TextContainer>
     </CardContainer>
   );
-}
+};
 
 export default CartItemCard;
