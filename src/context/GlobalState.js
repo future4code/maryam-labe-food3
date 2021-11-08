@@ -13,6 +13,7 @@ const GlobalState = (props) => {
   const [itemsAmount, setItemsAmount] = useState(0);
   const [priceToPay, setPriceToPay] = useState(0);
   const [paymentMethod, setPaymentMethod] = useState("");
+  const [user, setUser] = useState({});
 
   const history = useHistory();
 
@@ -33,6 +34,8 @@ const GlobalState = (props) => {
     setPriceToPay,
     paymentMethod,
     setPaymentMethod,
+    user,
+    setUser
   };
   return (
     <div>

@@ -66,8 +66,9 @@ export const ContainerAddress = styled.div`
   justify-content: space-between;
   background-color: ${neutralColor};
   width: 100%;
-  height: 4.75rem;
+  height: 5.5rem;
   padding: 1rem;
+  padding-right: 0;
   box-sizing: border-box;
 
   img{
@@ -81,6 +82,7 @@ export const ContainerUser = styled.div`
   width: 100%;
   height: 6rem;
   padding: 1rem;
+  padding-right: 0;
   box-sizing: border-box; 
 
   img{

@@ -47,10 +47,6 @@ const Router = (props) => {
         <Route exact path={"/profile"}>
           <ProfilePage />
         </Route>
-
-        <Route excat path={"/cart-teste"}>
-          <CartPageLayout />
-        </Route>
       </Switch>
     </BrowserRouter>
   );

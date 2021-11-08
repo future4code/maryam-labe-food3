@@ -9,12 +9,14 @@ import useRequestData from "../../Hooks/useRequestData";
 import { GlobalContext } from '../../context/GlobalContext';
 import { ScreenContainer, ContainerAddress, ContainerUser, SubtitleContainer } from "./ProfilePageStyles";
 import { primaryColor, secondaryColor } from '../../constants/colors';
-import { Typography, Divider } from "@mui/material";
+import { Typography, Divider, Button } from "@mui/material";
 import editIcon from "../../assets/edit-icon.svg";
 import OrderHistoryCard from "../../components/OrderHistoryCard/OrderHistoryCard"
+import { goToEditProfile, goToCreateAddress } from "../../routes/coordinator";
+import { useHistory } from "react-router";
+
 
 const Profile = () => {
-
   const order = {
     "totalPrice": 74.5,
     "restaurantName": "Habibs",
@@ -22,7 +24,9 @@ const Profile = () => {
     "expiresAt": 1628382179131
   }
 
+  const history = useHistory();
   const { setHeaderName, setChangePage, setShowLine } = useContext(GlobalContext)
+  const { user, setUser } = useContext(GlobalContext);
 
   setHeaderName('Meu Perfil')
   setChangePage(false)
@@ -32,12 +36,24 @@ const Profile = () => {
     { user: {} },
     `${base_url}/fourFoodA/profile`
   );
+  setUser(profile.user);
 
   const orders = useRequestData([], `${base_url}/fourFoodA/orders/history`);
-  const showPastOrders = orders.orders?.map((order) => {
-    console.log("order", order)
-    return <OrderHistoryCard key={order.createdAt} order={order} />;
-  });
+
+  const ordersList = orders[0].orders;
+  console.log("ordersList", ordersList);
+
+  const renderOrdersHistory = ordersList && ordersList.map(order => {
+    console.log("order no profile", order)
+    return (
+      <OrderHistoryCard key={order.createdAt} order={order} />
+    )
+  })
+
+  // const showPastOrders = orders.orders?.map((order) => {
+  //   console.log("order", order)
+  //   return <OrderHistoryCard key={order.createdAt} order={order} />;
+  // });
 
   return (
     <ScreenContainer>
@@ -47,7 +63,7 @@ const Profile = () => {
             variant="body1"
             gutterBottom
             component="div">
-            Nome usuário
+            {user?.name}
           </Typography>
           <Typography
             sx={{ lineHeight: 1 }}
@@ -55,19 +71,19 @@ const Profile = () => {
             gutterBottom
             component="div"
           >
-            Rua Blablabla, 106
+            {user?.email}
           </Typography>
           <Typography
             sx={{ lineHeight: 1 }}
             variant="body1"
             gutterBottom component="div"
           >
-            000.000.000-00
+            {user?.cpf}
           </Typography>
         </div>
-        <div>
+        <Button variant="text" sx={{ m: 0, p: 0 }} onClick={() => goToEditProfile(history)}>
           <img src={editIcon} />
-        </div>
+        </Button>
       </ContainerUser>
       <ContainerAddress>
         <div>
@@ -78,16 +94,16 @@ const Profile = () => {
             Endereço cadastrado
           </Typography>
           <Typography
-            sx={{ lineHeight: 0.5 }}
+            sx={{ lineHeight: 1 }}
             variant="body1"
             gutterBottom
             component="div">
-            Rua Blablabla, 22
+            {user?.address}
           </Typography>
         </div>
-        <div>
+        <Button variant="text" sx={{ m: 0, p: 0 }} onClick={() => goToCreateAddress(history)}>
           <img src={editIcon} />
-        </div>
+        </Button>
       </ContainerAddress>
       <SubtitleContainer>
         <Typography variant="subtitle1" gutterBottom component="div" sx={{ textAlign: 'left', m: 0, p: 0 }}>
@@ -95,9 +111,8 @@ const Profile = () => {
           <Divider fullWidth sx={{ border: 1 }}></Divider>
         </Typography>
       </SubtitleContainer>
-      <OrderHistoryCard order={order} />
-      {showPastOrders}
-    </ScreenContainer>
+      {renderOrdersHistory}
+    </ScreenContainer >
   );
 };
 

@@ -122,20 +122,20 @@ const FeedPage = () => {
         <input placeholder={"Restaurante"} onChange={handleSearch} />
         {clearFilter && <button onClick={clearFilters}>Limpar Filtros</button>}
       </DivSearch>
-      
+
       <DivCategory>{restaurantCategory}</DivCategory>
-      
-      { isLoading ? 
-        ( <LinearProgress color="primary" /> ) :
-        ( 
+
+      {isLoading ?
+        (<LinearProgress color="primary" />) :
+        (
           <DivRestaurant>
-          { restaurantComponents && restaurantComponents.length > 0 ? 
-          ( restaurantComponents
-          ) : (
-            <p>Não encontramos :(</p>
-          )}
-          </DivRestaurant> 
-        ) 
+            {restaurantComponents && restaurantComponents.length > 0 ?
+              (restaurantComponents
+              ) : (
+                <p>Não encontramos :(</p>
+              )}
+          </DivRestaurant>
+        )
       }
       <Footer />
     </div>
