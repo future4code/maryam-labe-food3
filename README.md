@@ -10,7 +10,7 @@ Nome dos integrantes:
 Link do Surge: https://kaput-fold.surge.sh/login
 
 O que funciona:
--x
+- x
 
 O que não funciona: 
 - x
