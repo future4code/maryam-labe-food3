@@ -66,5 +66,4 @@ export const DivCardInfo = styled.div`
 `
 export const DivRestaurant = styled.div`
     padding: 4px 20px;
-    border-radius: 0.5rem;
 `

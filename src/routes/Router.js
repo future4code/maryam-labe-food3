@@ -9,7 +9,7 @@ import RestaurantPage from "../pages/RestaurantPage/RestaurantPage";
 import ChartPage from "../pages/ChartPage/ChartPage";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import Header from "../components/Header/Header";
-import CartPageLayout from "../pages/ChartPage/CartPageLayout"
+import styled from "styled-components"
 
 const Router = (props) => {
   return (

@@ -5,6 +5,7 @@ import { ThemeProvider } from "@emotion/react";
 import { theme } from "./constants/theme";
 import GlobalState from "./context/GlobalState"
 
+
 function App() {
   return (
     <GlobalState>
