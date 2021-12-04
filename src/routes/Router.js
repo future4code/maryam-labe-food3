@@ -10,6 +10,7 @@ import ChartPage from "../pages/CartPage/CartPage";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import Header from "../components/Header/Header";
 import styled from "styled-components"
+import Footer from "../components/Footer/Footer";
 
 const Router = (props) => {
   return (
@@ -48,6 +49,7 @@ const Router = (props) => {
           <ProfilePage />
         </Route>
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 };
