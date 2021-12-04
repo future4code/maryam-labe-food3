@@ -5,7 +5,7 @@ import { base_url } from "../../constants/urls";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import AddressCard from "../../components/ProfileCard/AddressCard";
 import OrdersCard from "../../components/ProfileCard/OrdersCard";
-import useRequestData from "../../Hooks/useRequestData";
+import useRequestData from "../../hooks/useRequestData";
 import { GlobalContext } from '../../context/GlobalContext';
 import { ScreenContainer, ContainerAddress, ContainerUser, SubtitleContainer } from "./ProfilePageStyles";
 import { primaryColor, secondaryColor } from '../../constants/colors';

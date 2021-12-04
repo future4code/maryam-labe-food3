@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import { GlobalContext } from "../../context/GlobalContext";
-import useProtectedPage from "../../Hooks/useProtectedPage";
+import useProtectedPage from "../../hooks/useProtectedPage";
 import AddressCard from "../../components/ProfileCard/AddressCard";
 import Footer from "../../components/Footer/Footer";
-import useForm from "../../Hooks/useForm";
+import useForm from "../../hooks/useForm";
 import {
   ContainerAddress,
   ContainerRestaurant,

@@ -1,12 +1,12 @@
 import React from 'react';
 import { ScreenContainer } from './AddAddressPageStyles';
-import useForm from '../../Hooks/useForm';
+import useForm from '../../hooks/useForm';
 import { useHistory } from 'react-router';
 import axios from 'axios';
 import { base_url } from '../../constants/urls';
 import { goToFeed } from '../../routes/coordinator';
 import { Button, TextField, Typography } from '@mui/material';
-import useProtectedPage from '../../Hooks/useProtectedPage';
+import useProtectedPage from '../../hooks/useProtectedPage';
 
 const CreateAddressForm = () => {
   useProtectedPage();

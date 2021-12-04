@@ -7,7 +7,7 @@ import { headers_token } from "../../constants/headers";
 import RestaurantCard from "../../components/RestaurantCard/RestaurantCard";
 import { ScreenContainer, SubtitleContainer } from "./RestaurantPageStyles";
 import { Typography, Divider } from "@mui/material";
-import useProtectedPage from "../../Hooks/useProtectedPage";
+import useProtectedPage from "../../hooks/useProtectedPage";
 import { GlobalContext } from "../../context/GlobalContext";
 import LinearProgress from "@mui/material/LinearProgress";
 

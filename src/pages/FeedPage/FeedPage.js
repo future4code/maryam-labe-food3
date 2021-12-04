@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import Footer from "../../components/Footer/Footer";
-import useProtectedPage from "../../Hooks/useProtectedPage";
-import useRequestData from "../../Hooks/useRequestData";
+import useProtectedPage from "../../hooks/useProtectedPage";
+import useRequestData from "../../hooks/useRequestData";
 import { base_url } from "../../constants/urls";
 import { GlobalContext } from "../../context/GlobalContext";
 import { useHistory } from "react-router";

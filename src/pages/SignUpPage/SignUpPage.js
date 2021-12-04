@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import useForm from "../../Hooks/useForm";
+import useForm from "../../hooks/useForm";
 import { signUp } from "../../services/SignupLogin";
 import { useHistory } from "react-router";
 import { goToCreateAddress } from "../../routes/coordinator";
-import useUnprotectedPage from "../../Hooks/useUnprotectedPage";
+import useUnprotectedPage from "../../hooks/useUnprotectedPage";
 import { ScreenContainer, FormContainer } from "./SignUpPageStyles";
 import { Button, TextField, Typography } from '@mui/material';
 import logo from "../../assets/red-logo.svg";
@@ -12,7 +12,7 @@ import { GlobalContext } from '../../context/GlobalContext'
 const SignUpPage = () => {
   useUnprotectedPage();
 
-  const {setChangePage, setShowLine} = useContext(GlobalContext) 
+  const { setChangePage, setShowLine } = useContext(GlobalContext)
 
   const history = useHistory();
   setChangePage(true)

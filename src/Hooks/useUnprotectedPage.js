@@ -9,7 +9,6 @@ const useUnprotectedPage = () => {
   useLayoutEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      // função de ir para o feed
       goToFeed(history);
     }
   }, [history]);
