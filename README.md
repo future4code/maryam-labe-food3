@@ -11,7 +11,7 @@ Projeto mobile-first simulando site de delivery de comida (iFood).
 - Carlos Daniel Oliveira Nunes
 
 ## Link
-https://kaput-fold.surge.sh/login
+https://kaput-fold.surge.sh
 
 ## Tecnologias
 
