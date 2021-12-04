@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import useProtectedPage from '../../Hooks/useProtectedPage';
+import useProtectedPage from '../../hooks/useProtectedPage';
 import { GlobalContext } from '../../context/GlobalContext';
-import useRequestData from "../../Hooks/useRequestData";
+import useRequestData from "../../hooks/useRequestData";
 import { base_url } from "../../constants/urls";
 
 import { DivEditProfile, ContainerEditProfile, StyledButton } from "./EditProfilePageStyles";

@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import useForm from "../../Hooks/useForm";
+import useForm from "../../hooks/useForm";
 import { goToFeed, goToSignUp } from "../../routes/coordinator";
 import { login } from "../../services/SignupLogin";
 import { useHistory } from "react-router";
-import useUnprotectedPage from "../../Hooks/useUnprotectedPage";
+import useUnprotectedPage from "../../hooks/useUnprotectedPage";
 import { Button, TextField, Typography } from "@mui/material";
 import {
   ScreenContainer,
@@ -16,7 +16,7 @@ import { GlobalContext } from '../../context/GlobalContext'
 const LoginPage = () => {
   useUnprotectedPage();
 
-  const { setChangePage , setShowLine} = useContext(GlobalContext)
+  const { setChangePage, setShowLine } = useContext(GlobalContext)
   const history = useHistory();
 
   setChangePage(false)
@@ -76,8 +76,8 @@ const LoginPage = () => {
           placeholder="Mínimo 6 caracteres"
           required
           fullWidth
-          // title="Senha precisa ter minimo de 8 caracteres e pelo menos 1 letra e 1 numero"
-          // pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+        // title="Senha precisa ter minimo de 8 caracteres e pelo menos 1 letra e 1 numero"
+        // pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
         />
         <Button
           sx={{ maxWidth: 400, textTransform: "none" }}
