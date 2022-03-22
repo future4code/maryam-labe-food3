@@ -152,7 +152,7 @@ const ChartPage = () => {
       ) : null}
       {priceToPay ? <p>SUBTOTAL: R$ {priceToPay.toFixed(2)}</p> : null}
       <PaymentOption />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
